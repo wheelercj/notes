@@ -38,12 +38,12 @@
 </pre></div>
 </code></pre>
 <p>Then the function call can look something like this:</p>
-<pre><code class="lang-cpp"><div class="source"><pre><span></span><span class="n">swap</span><span class="p">(</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">books</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">books</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span><span class="w"></span>
+<pre><code class="lang-cpp"><div class="source"><pre><span></span><span class="n">swap</span><span class="p">(</span><span class="o">&amp;</span><span class="n">books</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="o">&amp;</span><span class="n">books</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span><span class="w"></span>
 </pre></div>
 </code></pre>
 <p>Or instead of swapping the pointers themselves,<br>
 <strong>you can swap what the pointers are pointing to:</strong></p>
-<pre><code class="lang-cpp"><div class="source"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">swap</span><span class="p">(</span><span class="n">Book</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="w"> </span><span class="n">book1</span><span class="p">,</span><span class="w"> </span><span class="n">Book</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="w"> </span><span class="n">book2</span><span class="p">)</span><span class="w"></span>
+<pre><code class="lang-cpp"><div class="source"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">swap</span><span class="p">(</span><span class="n">Book</span><span class="o">&amp;</span><span class="w"> </span><span class="n">book1</span><span class="p">,</span><span class="w"> </span><span class="n">Book</span><span class="o">&amp;</span><span class="w"> </span><span class="n">book2</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">Book</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">book1</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="n">book1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">book2</span><span class="p">;</span><span class="w"></span>
