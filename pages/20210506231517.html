@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+
+    <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <title>Chris' notes</title>
+        <link rel='stylesheet' type='text/css' href='../style.css' media='screen' />
+        <!-- bootstrap -->
+        <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'
+            integrity='sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z' crossorigin='anonymous'>
+        <!-- bootstrap -->
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href='../about.html'>About</a></li>
+                    <li><a href='../index.html'>Home</a></li>
+                </ul>
+                <a href='../index.html' class='title'>Chris' notes</a>
+            </nav>
+        </header>
+
+        <main>
+<h1>Python regex for markdown</h1>
+<h4>tags:</h4>
+<pre><code>(?&lt;=\s)#[a-zA-Z0-9_-]+
+</code></pre>
+<h4>level 1 headers:</h4>
+<pre><code># .+
+(?&lt;![^\n])# .+
+</code></pre>
+<h4>headers of any level:</h4>
+<pre><code>(^#{1,6} .+)
+</code></pre>
+<h4>triple backtick code blocks, with the entire code block as group 1:</h4>
+<pre><code>(?&lt;=\n)(`{3}(.|\n)*?(?&lt;=\n)`{3})
+</code></pre>
+<h4>single backtick code blocks, with the entire code block as group 1:</h4>
+<pre><code>(`[^`]+?`)
+</code></pre>
+<p>When working with both types of code blocks, you will probably want to handle the triple backtick type first.</p>
+<h4>markdown-style links:</h4>
+<pre><code>\[(.+)]\((.+)\)
+</code></pre>
+<h4>markdown-style links to markdown zettelkasten files:</h4>
+<pre><code>\[§\]\((\d{14})\.md\)
+</code></pre>
+<h4>zettelkasten-style links:</h4>
+<pre><code>\[\[(\d{14})\]\]
+</code></pre>
+<h4>pdf or png file names and extensions in markdown-style links:</h4>
+<pre><code>(?&lt;=(\\|/))[^\\/]+\S\.(pdf|png)(?=\))
+</code></pre>
+<p>this also gets some website URLs</p>
+<h4>pdf or png file names and extensions in markdown-style links, where the file path must be absolute:</h4>
+<pre><code>(?&lt;=]\(C:)[^\n]+([^\\/\n]+\.(pdf|png))(?=\))
+</code></pre>
+<h4>pdf or png file paths in markdown-style links, with the entire match as group 1:</h4>
+<pre><code>(?&lt;=]\()(.+\S\.(pdf|png))(?=\))
+</code></pre>
+<p>this also gets some website URLs</p>
+<h4>absolute pdf or png file paths in markdown-style links, with the file names as group 1:</h4>
+<pre><code>(?&lt;=]\()C:[^\n]*?([^\\/\n]+\.(pdf|png))(?=\))
+</code></pre>
+<h4>when using <code>re.sub</code> or <code>re.subn</code> on strings that may contain undefined escapes</h4>
+<p>"Unknown escapes of ASCII letters are reserved for future use and treated as errors" (<a href="https://docs.python.org/3/library/re.html">source</a>).<br>
+To prevent errors and use the literal characters, escape the backslashes with <code>str.replace('\\', r'\\')</code> before calling <code>re.sub</code> or <code>re.subn</code>.<br>
+For example, <code>result = re.sub(r'replace this pattern', with_this_str.replace('\\', r'\\'), in_this_str)</code></p>
+</main>
+
+<footer>
+    
+</footer>
+
+<!-- bootstrap -->
+<script src='https://code.jquery.com/jquery-3.5.1.slim.min.js'
+    integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj'
+    crossorigin='anonymous'></script>
+<script src='https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js'
+    integrity='sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN'
+    crossorigin='anonymous'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'
+    integrity='sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV'
+    crossorigin='anonymous'></script>
+<!-- bootstrap -->
+</body>
+
+</html>
