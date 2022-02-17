@@ -34,38 +34,36 @@
 <li>keeps track of the number of wins, draws, and losses, displaying these between each match</li>
 </ul>
 <p>Feel free to use the code below or make any changes to it.</p>
-<pre><code class="language-cpp">#include &lt;iostream&gt;
-using namespace std;
+<pre><code class="language-cpp"><div class="source"><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span><span class="w"></span>
 
-void print(char marks[]);
+<span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">marks</span><span class="p">[]);</span><span class="w"></span>
 
-int main()
-{
-    char marks[9] = { ' ' }; // this array will hold the Xs and Os
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">marks</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="sc">&#39; &#39;</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// this array will hold the Xs and Os</span>
 
-    /*
-        Here's part of a way to detect whether a player has won:
-        if (marks[0] + marks[1] + marks[2] == 'X' * 3)
-            // then player X won
-    */
+<span class="w">    </span><span class="cm">/*</span>
+<span class="cm">        Here&#39;s part of a way to detect whether a player has won:</span>
+<span class="cm">        if (marks[0] + marks[1] + marks[2] == &#39;X&#39; * 3)</span>
+<span class="cm">            // then player X won</span>
+<span class="cm">    */</span><span class="w"></span>
 
 
-}
+<span class="p">}</span><span class="w"></span>
 
-void print(char marks[])
-{
-    cout &lt;&lt; &quot;\n\n\n    |   |&quot;
-        &lt;&lt; &quot;\n  &quot; &lt;&lt; marks[6] &lt;&lt; &quot; | &quot; &lt;&lt; marks[7] &lt;&lt; &quot; | &quot; &lt;&lt; marks[8]
-        &lt;&lt; &quot;\n -----------&quot;
-        &lt;&lt; &quot;\n    |   |&quot;
-        &lt;&lt; &quot;\n  &quot; &lt;&lt; marks[3] &lt;&lt; &quot; | &quot; &lt;&lt; marks[4] &lt;&lt; &quot; | &quot; &lt;&lt; marks[5]
-        &lt;&lt; &quot;\n    |   |&quot;
-        &lt;&lt; &quot;\n -----------&quot;
-        &lt;&lt; &quot;\n  &quot; &lt;&lt; marks[0] &lt;&lt; &quot; | &quot; &lt;&lt; marks[1] &lt;&lt; &quot; | &quot; &lt;&lt; marks[2]
-        &lt;&lt; &quot;\n    |   |&quot;;
-}
-</code></pre>
-</main>
+<span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">marks</span><span class="p">[])</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n\n\n</span><span class="s">    |   |&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">  &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">marks</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; | &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">marks</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; | &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">marks</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s"> -----------&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">    |   |&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">  &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">marks</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; | &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">marks</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; | &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">marks</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">    |   |&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s"> -----------&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">  &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">marks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; | &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">marks</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; | &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">marks</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">    |   |&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></div></code></pre></main>
 
 <footer>
     

@@ -29,29 +29,21 @@
 <p>Swapping pointers is a little different than swapping normal variables. There are two ways to do this.</p>
 <p>Assuming a class called <code>Book</code> has been defined, and an array of type <code>Book</code> called <code>books</code> has been created . . .</p>
 <p><strong>You can swap the pointers themselves:</strong></p>
-<pre><code class="language-cpp">void swap(Book** book1, Book** book2)
-{
-    Book* temp = *book1;
-    *book1 = *book2;
-    *book2 = temp;
-}
-</code></pre>
-<p>Then the function call can look something like this:</p>
-<pre><code class="language-cpp">swap(&amp;books[i], &amp;books[j]);
-</code></pre>
-<p>Or instead of swapping the pointers themselves,<br />
+<pre><code class="language-cpp"><div class="source"><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">swap</span><span class="p">(</span><span class="n">Book</span><span class="o">**</span><span class="w"> </span><span class="n">book1</span><span class="p">,</span><span class="w"> </span><span class="n">Book</span><span class="o">**</span><span class="w"> </span><span class="n">book2</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Book</span><span class="o">*</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">book1</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="o">*</span><span class="n">book1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">book2</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="o">*</span><span class="n">book2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></div></code></pre><p>Then the function call can look something like this:</p>
+<pre><code class="language-cpp"><div class="source"><span></span><span class="n">swap</span><span class="p">(</span><span class="o">&amp;</span><span class="n">books</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="o">&amp;</span><span class="n">books</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span><span class="w"></span></div></code></pre><p>Or instead of swapping the pointers themselves,<br />
 <strong>you can swap what the pointers are pointing to:</strong></p>
-<pre><code class="language-cpp">void swap(Book&amp; book1, Book&amp; book2)
-{
-    Book temp = book1;
-    book1 = book2;
-    book2 = temp;
-}
-</code></pre>
-<p>Here's the function call:</p>
-<pre><code class="language-cpp">swap(*books[i], *books[j]);
-</code></pre>
-<p><strong>To compare,</strong><br />
+<pre><code class="language-cpp"><div class="source"><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">swap</span><span class="p">(</span><span class="n">Book</span><span class="o">&amp;</span><span class="w"> </span><span class="n">book1</span><span class="p">,</span><span class="w"> </span><span class="n">Book</span><span class="o">&amp;</span><span class="w"> </span><span class="n">book2</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Book</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">book1</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">book1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">book2</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">book2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></div></code></pre><p>Here's the function call:</p>
+<pre><code class="language-cpp"><div class="source"><span></span><span class="n">swap</span><span class="p">(</span><span class="o">*</span><span class="n">books</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="o">*</span><span class="n">books</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span><span class="w"></span></div></code></pre><p><strong>To compare,</strong><br />
 Sometimes it's better to swap the pointers themselves because then less information has to be moved. Sometimes it doesn't make much of a difference which method is used.</p>
 </main>
 
