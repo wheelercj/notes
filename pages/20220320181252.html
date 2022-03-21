@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+
+    <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <title>Chris' notes</title>
+        <link rel='stylesheet' type='text/css' href='../style.css' media='screen' />
+        <!-- bootstrap -->
+        <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'
+            integrity='sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z' crossorigin='anonymous'>
+        <!-- bootstrap -->
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href='../about.html'>About</a></li>
+                    <li><a href='../index.html'>Home</a></li>
+                </ul>
+                <a href='../index.html' class='title'>Chris' notes</a>
+            </nav>
+        </header>
+
+        <main>
+<h1>how to create custom terminal commands (Windows)</h1>
+<p>With terminal apps such as Windows Terminal, you can create your own custom terminal command to make running scripts and apps easier.</p>
+<ol>
+<li>Create a <code>.bat</code> file named after what you want the terminal command to be. For example, if you want to create a <code>todo</code> command that adds tasks to a to do list by running <a href="https://github.com/wheelercj/refactor-todo-list/blob/master/create_task.py">a Python script</a>, create <code>todo.bat</code>.</li>
+<li>Put into this new file the terminal command(s) that will run the script/app. Continuing with the above example, the contents of the file could be <code>py -3.10 &quot;C:\Users\chris\Documents\programming\refactor todo list\create_task.py&quot; &quot;%*&quot;</code>.</li>
+<li>Add the path to your new <code>.bat</code> file to the Path user environment variable.<ol>
+<li>Copy the file's path.</li>
+<li>Press the Windows key.</li>
+<li>Type <code>path</code> and press Enter.</li>
+<li>Click <code>Environment Variables</code>.</li>
+<li>In the top half of the window, select the <code>Path</code> variable and click <code>Edit</code>.</li>
+<li>Click <code>New</code> and paste the path.</li>
+</ol>
+</li>
+</ol>
+<p>Now you can run your script by just opening Windows Terminal and typing the command you created without worrying what the current working directory is.</p>
+</main>
+
+<footer>
+    
+</footer>
+
+<!-- bootstrap -->
+<script src='https://code.jquery.com/jquery-3.5.1.slim.min.js'
+    integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj'
+    crossorigin='anonymous'></script>
+<script src='https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js'
+    integrity='sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN'
+    crossorigin='anonymous'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'
+    integrity='sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV'
+    crossorigin='anonymous'></script>
+<!-- bootstrap -->
+</body>
+
+</html>
