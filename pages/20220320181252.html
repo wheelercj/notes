@@ -28,9 +28,9 @@
 <h1>how to create custom terminal commands (Windows)</h1>
 <p>With terminal apps such as Windows Terminal, you can create your own custom terminal command to make running scripts and apps easier.</p>
 <ol>
-<li>Create a <code>.bat</code> file named after what you want the terminal command to be. For example, if you want to create a <code>todo</code> command that adds tasks to a to do list by running <a href="https://github.com/wheelercj/refactor-todo-list/blob/master/create_task.py">a Python script</a>, create <code>todo.bat</code>.</li>
+<li>Create a .bat file named after what you want the terminal command to be. For example, if you want to create a <code>todo</code> command that adds tasks to a to do list by running <a href="https://github.com/wheelercj/refactor-todo-list/blob/master/create_task.py">a Python script</a>, create <code>todo.bat</code>.</li>
 <li>Put into this new file the terminal command(s) that will run the script/app. Continuing with the above example, the contents of the file could be <code>py -3.10 &quot;C:\Users\chris\Documents\programming\refactor todo list\create_task.py&quot; &quot;%*&quot;</code>.</li>
-<li>Add the path to your new <code>.bat</code> file to the Path user environment variable.<ol>
+<li>Add the path to your new .bat file (or the folder it's in) to the Path user environment variable.<ol>
 <li>Copy the file's path.</li>
 <li>Press the Windows key.</li>
 <li>Type <code>path</code> and press Enter.</li>
@@ -41,6 +41,7 @@
 </li>
 </ol>
 <p>Now you can run your script by just opening Windows Terminal and typing the command you created without worrying what the current working directory is.</p>
+<p>If you will create multiple custom terminal commands, you could put all the .bat files into a folder and only add the folder to your Path environment variable.</p>
 </main>
 
 <footer>
