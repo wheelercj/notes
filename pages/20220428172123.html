@@ -26,7 +26,7 @@
 
         <main>
 <h1>how to print emoji in C++</h1>
-<p>First, find the emoji/symbol or its four-digit code point (e.g. U+263A) that you want to print. Below are some examples, a more complete list is at the end of this page, or you can use one of these sites: <a href="https://home.unicode.org">home.unicode.org</a> or <a href="https://unicode-table.com">unicode-table.com</a>.</p>
+<p>First, find the emoji/symbol or its four-digit code point (e.g. U+263A) that you want to print. Below are some examples, a more complete list is at the end of this page, or you can use a site like this one: <a href="https://unicode-table.com">unicode-table.com</a>. Unfortunately, C++ seems to still only support printing the unicode characters with code points up to \uFFFF, at least on Windows.</p>
 <pre><code>☺ ☻ ♥ ♦ ♣ ♠ ► ◄ ↕ ‼ ¶ § ▬ ↨ ↑ ↓  ҈  ҉ ⁕ ℹ ⌔ ⌕ ⌖ ⌗ ⌘ ⌙ ⌠ ⌡ ⌢ ⌣ ⌤ ⌥ ⌦
 ⌧ ⌨ ⎆ ⎇ ⎈ ⎉ ⎐ ⎗ ⎘ ⎙ ☀ ☁ ☂ ☃ ☄ ★ ☆ ☇ ☈ ☉ ☐ ☑ ☒ ☓ ☔ ☕ ☖ ☗ ☘
 ☙ ☠ ☡ ☢ ☣ ☤ ☥ ☦ ☧ ☨ ☩ ☸ ☹ ♀ ♁ ♂ ♃ ♄ ♅ ♆ ♇ ♈ ♉ ♐ ♑ ♒ ♓ ♔
@@ -37,7 +37,6 @@
 </code></pre>
 <p>Here's how these look in Windows Terminal.</p>
 <p><img src="00dc01c3a6d37a8339cb708c8803b085.png" alt="00dc01c3a6d37a8339cb708c8803b085.png" /></p>
-<p>Unfortunately, C++ seems to still only support printing the unicode characters with code points up to U+9999, at least on Windows.</p>
 <p>Next, you can use the code below.</p>
 <pre><code class="language-cpp"><div class="source"><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="c1">  // stdout, wstring, wcout, _fileno</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;io.h&gt;</span><span class="c1">  // _setmode</span><span class="cp"></span>
