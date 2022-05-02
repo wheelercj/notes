@@ -34,14 +34,14 @@
 <h2>Mac and Linux</h2>
 <p><a href="https://medium.com/devnetwork/how-to-create-your-own-custom-terminal-commands-c5008782a78e">This guide</a> seems well-written (no need to rewrite the wheel).</p>
 <h2>Windows</h2>
-<p>I recommend checking out Windows Terminal if you're choosing a terminal app. Here's how to create custom commands:</p>
+<p>I recommend checking out <a href="https://aka.ms/terminal">Windows Terminal</a> if you're choosing a terminal app. Here's how to create custom commands:</p>
 <ol>
 <li>Create a folder that will hold the files that describe what your command(s) will do. You can name this folder anything and put it anywhere you want; I happened to name mine <code>C:/Users/chris/Documents/programming/terminal_bindings</code>.</li>
 <li>Add the path to the new folder to the PATH user environment variable. See <a href="20220429185353.html">[§] how to edit PATH in Windows 10</a>.</li>
 </ol>
 <p><strong>The steps above never need to be repeated when you create more terminal commands in the future.</strong></p>
 <ol start="3">
-<li>In the new folder , create a .bat file named after what you want the terminal command to be. For example, if you want to create a <code>todo</code> command that adds tasks to a to do list by running a Python script (<a href="https://github.com/wheelercj/refactor-todo-list/blob/master/create_task.py">like this one</a>), create <code>todo.bat</code>.</li>
+<li>In the new folder, create a .bat file named after what you want the terminal command to be. For example, if you want to create a <code>todo</code> command that adds tasks to a to do list by running a Python script (<a href="https://github.com/wheelercj/refactor-todo-list/blob/master/create_task.py">like this one</a>), create <code>todo.bat</code>.</li>
 <li>Put into this new file the terminal command(s) that will run the script/app. Continuing with the above example, the contents of the file could be <code>py -3.10 &quot;C:\Users\chris\Documents\programming\refactor todo list\create_task.py&quot; &quot;%*&quot;</code>. If you want to run an <code>.exe</code> file, you only need to enter the path to that file, surrounded by quotes if there are spaces in the file path.</li>
 </ol>
 <p>Now you can run your script by simply opening your terminal and typing the command you created without worrying what the current working directory is.</p>
@@ -50,22 +50,23 @@
 <p><strong>todo.bat</strong></p>
 <pre><code>py -3.10 &quot;C:\Users\chris\Documents\programming\refactor todo list\create_task.py&quot; &quot;%*&quot;
 </code></pre>
-<p>The <code>&quot;%*&quot;</code> at the end allows the Python script to receive any number of words as arguments when I use the <code>todo</code> command.</p>
+<p>The <code>&quot;%*&quot;</code> at the end allows <a href="https://github.com/wheelercj/refactor-todo-list/blob/master/create_task.py">the Python script</a> to receive any number of words as arguments when I use the <code>todo</code> command.</p>
 <p><strong>tutor.bat</strong></p>
 <pre><code>py -3.10 C:\Users\chris\Documents\programming\opener\main.py
 start /d &quot;C:/Users/chris/AppData/Local/Microsoft/Teams/current&quot; Teams.exe
 start /d &quot;C:/Users/chris/AppData/Roaming/Zoom/bin&quot; Zoom.exe
-timeout 1
+timeout 2
 C:/Users/chris/Documents/programming/terminal_bindings/zq.bat
 </code></pre>
-<p>This command starts four apps I use while I'm tutoring. There's a <code>timeout 1</code> to pause the script for a second so that an error message from Microsoft Teams doesn't mess up the output from what runs after it. I decided to use <code>start /d</code> as the start of the commands to run executable files because without that, there were some cases where one of them would freeze and prevent the rest of the file from running.</p>
-<p><strong>radix.bat</strong></p>
-<pre><code>&quot;C:\Users\chris\Documents\programming\Radix-Converter\Debug\Radix-Converter.exe&quot;
-</code></pre>
-<p>Here's the exe for a C++ program I wrote. No need for the <code>start /d</code> here.</p>
+<p>This command starts four apps I use while I'm tutoring. There's a <code>timeout 2</code> to pause the script for a few seconds so that an error message from Microsoft Teams doesn't mess up the output from what runs after it. I decided to use <code>start /d</code> as the start of the commands to run executable files because without that, there were some cases where one of them would freeze and prevent the rest of the file from running.</p>
 <p><strong>zq.bat</strong></p>
 <pre><code>py -3.10 C:\Users\chris\Documents\programming\zq\src\zq\main.py
 </code></pre>
+<p>For <a href="https://github.com/wheelercj/zq">an app</a> that shows a welcome message and approximate wait times in zoom meetings.</p>
+<p><strong>radix.bat</strong></p>
+<pre><code>&quot;C:\Users\chris\Documents\programming\Radix-Converter\Debug\Radix-Converter.exe&quot;
+</code></pre>
+<p>Here's the command to run the exe for <a href="https://github.com/wheelercj/Radix-Converter">a C++ program I wrote</a>. No need for <code>start /d</code> here.</p>
 <p><strong>binds.bat</strong></p>
 <pre><code>explorer C:\Users\chris\Documents\programming\terminal_bindings
 </code></pre>
