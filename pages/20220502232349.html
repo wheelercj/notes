@@ -166,11 +166,10 @@
 <p><strong>practice question 7:</strong> add to the recursive version of the linked list code above a recursive function that finds the location of a value in the list. For example, in the list containing the numbers 11, 12, 13, and 14, the location of 11 is 0, the location of 12 is 1, etc. One possible solution is at the end of this page.</p>
 <p><strong>practice question 8:</strong> add to the recursive version of the linked list code above a recursive function that inserts a new value into the list at a given index. If index 0 is chosen, the new node should become the first node in the list. One possible solution is at the end of this page.</p>
 <p>Sometimes iterative loops are easier to use, and sometimes recursive loops are easier to use. In any case, recursion is another tool in your belt that will be very helpful in the future.</p>
+<p>Further reading: <a href="https://en.wikipedia.org/wiki/Recursion">wikipedia.org/wiki/Recursion</a></p>
 <h2>practice question solutions</h2>
 <p>Here are some of the possible solutions to the practice questions above. If you want to run the code, a super quick way is with <a href="https://tio.run/#cpp-gcc">tio.run</a>.</p>
-<ol>
-<li>A recursive function that prints a descending range of numbers:</li>
-</ol>
+<p><strong>sample answer 1:</strong> A recursive function that prints a descending range of numbers:</p>
 <pre><code class="language-cpp"><div class="source"><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 <span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span><span class="w"></span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">print_descending_numbers</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">);</span><span class="w"></span>
@@ -186,9 +185,7 @@
 <span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="n">print_descending_numbers</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">min</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span></div></code></pre><p>Output: <code>5 4 3 2 1</code></p>
-<ol start="2">
-<li>A program that uses recursion to find the sum of a descending range, and then prints the sum:</li>
-</ol>
+<p><strong>sample answer 2:</strong> A program that uses recursion to find the sum of a descending range, and then prints the sum:</p>
 <pre><code class="language-cpp"><div class="source"><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 <span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span><span class="w"></span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">find_sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">);</span><span class="w"></span>
@@ -204,9 +201,7 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">find_sum</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">min</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span></div></code></pre><p>Output: <code>15</code></p>
-<ol start="3">
-<li>A program that uses recursion to find the product of a descending range, and then prints the result:</li>
-</ol>
+<p><strong>sample answer 3:</strong> A program that uses recursion to find the product of a descending range, and then prints the result:</p>
 <pre><code class="language-cpp"><div class="source"><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 <span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span><span class="w"></span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">find_product</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">);</span><span class="w"></span>
@@ -222,9 +217,7 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">find_product</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">min</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span></div></code></pre><p>Output: <code>120</code></p>
-<ol start="4">
-<li>A program that uses recursion to calculate a factorial, and then prints the result:</li>
-</ol>
+<p><strong>sample answer 4:</strong> A program that uses recursion to calculate a factorial, and then prints the result:</p>
 <pre><code class="language-cpp"><div class="source"><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 <span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span><span class="w"></span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">factorial</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"></span>
@@ -240,32 +233,24 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span></div></code></pre><p>Output: <code>120</code></p>
-<ol start="5">
-<li>A function that recursively finds the sum of all integers in the linked list:</li>
-</ol>
+<p><strong>sample answer 5:</strong> A function that recursively finds the sum of all integers in the linked list:</p>
 <pre><code class="language-cpp"><div class="source"><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">find_sum</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span><span class="w"> </span><span class="n">node_ptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">node_ptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"></span>
 <span class="w">    	</span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">node_ptr</span><span class="o">-&gt;</span><span class="n">value</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">find_sum</span><span class="p">(</span><span class="n">node_ptr</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span></div></code></pre><ol start="6">
-<li>A function that recursively finds the length of the linked list:</li>
-</ol>
+<span class="p">}</span><span class="w"></span></div></code></pre><p><strong>sample answer 6:</strong> A function that recursively finds the length of the linked list:</p>
 <pre><code class="language-cpp"><div class="source"><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">find_length</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span><span class="w"> </span><span class="n">node_ptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">node_ptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"></span>
 <span class="w">    	</span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">find_length</span><span class="p">(</span><span class="n">node_ptr</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span></div></code></pre><ol start="7">
-<li>A function that recursively finds the location of a value in the linked list:</li>
-</ol>
+<span class="p">}</span><span class="w"></span></div></code></pre><p><strong>sample answer 7:</strong> A function that recursively finds the location of a value in the linked list:</p>
 <pre><code class="language-cpp"><div class="source"><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">find_value</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">Node</span><span class="o">*</span><span class="w"> </span><span class="n">node_ptr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">node_ptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"></span>
 <span class="w">    	</span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">target</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">node_ptr</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">)</span><span class="w"></span>
 <span class="w">    	</span><span class="k">return</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">find_value</span><span class="p">(</span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">node_ptr</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span></div></code></pre><ol start="8">
-<li>A function that recursively inserts a new value into the linked list at a given index:</li>
-</ol>
+<span class="p">}</span><span class="w"></span></div></code></pre><p><strong>sample answer 8:</strong> A function that recursively inserts a new value into the linked list at a given index:</p>
 <pre><code class="language-cpp"><div class="source"><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">insert</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">new_value</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">Node</span><span class="o">**</span><span class="w"> </span><span class="n">next_ptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    	</span><span class="n">Node</span><span class="o">*</span><span class="w"> </span><span class="n">new_node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="n">new_value</span><span class="p">);</span><span class="w"></span>
@@ -276,7 +261,7 @@
 <span class="w">    	</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Error! Invalid index.&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">else</span><span class="w"></span>
 <span class="w">    	</span><span class="n">insert</span><span class="p">(</span><span class="n">new_value</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p">(</span><span class="o">*</span><span class="n">next_ptr</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span></div></code></pre><p>5-8. You can see all of the above linked list code combined <a href="https://gist.github.com/wheelercj/299d03080d69b59547e7678faa7a1009">here</a>. It's output is:</p>
+<span class="p">}</span><span class="w"></span></div></code></pre><p><strong>sample answer 5-8:</strong> You can see all of the above linked list code combined <a href="https://gist.github.com/wheelercj/299d03080d69b59547e7678faa7a1009">here</a>. Its output is:</p>
 <pre><code>11 12 13 14
 sum = 50
 length = 4
