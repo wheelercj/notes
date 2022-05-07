@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+
+    <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <title>Chris' notes</title>
+        <link rel='stylesheet' type='text/css' href='../style.css' media='screen' />
+        <!-- bootstrap -->
+        <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'
+            integrity='sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z' crossorigin='anonymous'>
+        <!-- bootstrap -->
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href='../about.html'>About</a></li>
+                    <li><a href='../index.html'>Home</a></li>
+                </ul>
+                <a href='../index.html' class='title'>Chris' notes</a>
+            </nav>
+        </header>
+
+        <main>
+<h1>how to run your C++ app in Windows Terminal</h1>
+<p>Some IDEs on Windows like Visual Studio may display your app's output in a window that is missing many features. For example, Visual Studio's default output window cannot display most emoji and some text colors and styles. You can download <a href="https://aka.ms/terminal">Windows Terminal</a> and run your code in it by following the steps below to get more output features.</p>
+<ol>
+<li>Build your app (generate an .exe file) if you haven't already.</li>
+</ol>
+<p><img src="07f9be865aa8a56695e310ee38ca3894.png" alt="07f9be865aa8a56695e310ee38ca3894.png" /></p>
+<ol start="2">
+<li><p>Copy the path of the .exe file (detailed steps below).</p>
+</li>
+<li><p>Open Windows Terminal</p>
+</li>
+<li><p>Type <code>&amp;</code>, a space, paste the path to your .exe file, and press Enter.</p>
+</li>
+</ol>
+<p>It will look something like this:</p>
+<pre><code class="language-powershell"><div class="source"><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">chris</span><span class="p">&gt;</span> <span class="p">&amp;</span> <span class="s2">&quot;C:\Users\chris\source\repos\Project1\x64\Debug\Project1.exe&quot;</span></div></code></pre><p>If you want to run the app again, just press the up arrow until the command to run it reappears. If you will run apps with commands like this often, you might want to know <a href="20220320181252.html">[§] how to create custom terminal commands</a>.</p>
+<h2>how to copy the path of your app's .exe file</h2>
+<p>These instructions are mostly for Visual Studio. You must have built your app at least once for the .exe to exist.</p>
+<ol>
+<li>In your Solution Explorer window, right click the line that starts with &quot;Solution&quot;.</li>
+</ol>
+<p><img src="C:/Users/chris/Documents/Zettelkasten/assets/470061a4c7a5b07243c5aef2334b6bc0.png" alt="470061a4c7a5b07243c5aef2334b6bc0.png" title="470061a4c7a5b07243c5aef2334b6bc0.png" /></p>
+<p><img src="2df142ae607c4bfb0aa81a2a129e790b.png" alt="2df142ae607c4bfb0aa81a2a129e790b.png" /></p>
+<ol start="2">
+<li>Click &quot;Open Folder in File Explorer&quot;.</li>
+</ol>
+<p><img src="1a62535a1770025410cde0b1ab422ebd.png" alt="1a62535a1770025410cde0b1ab422ebd.png" /></p>
+<ol start="3">
+<li>Open the folder named &quot;x64&quot;, and the &quot;Debug&quot; folder within it.</li>
+</ol>
+<p><img src="4e258db0bb6ce8b7751461bcb456d710.png" alt="4e258db0bb6ce8b7751461bcb456d710.png" /></p>
+<ol start="4">
+<li>Select the .exe file and in File Explorer's &quot;Home&quot; tab, click &quot;Copy path&quot;.</li>
+</ol>
+</main>
+
+<footer>
+    
+</footer>
+
+<!-- bootstrap -->
+<script src='https://code.jquery.com/jquery-3.5.1.slim.min.js'
+    integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj'
+    crossorigin='anonymous'></script>
+<script src='https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js'
+    integrity='sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN'
+    crossorigin='anonymous'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'
+    integrity='sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV'
+    crossorigin='anonymous'></script>
+<!-- bootstrap -->
+</body>
+
+</html>
