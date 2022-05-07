@@ -38,23 +38,28 @@
 </code></pre>
 <p>Here's how these look in Windows Terminal.</p>
 <p><img src="01b5a53372f219ec1a40499e6ced9e77.png" alt="01b5a53372f219ec1a40499e6ced9e77.png" /></p>
-<p>Now to actually print Unicode characters, Windows users can use the code below (Mac and Linux users don't need to use this and probably shouldn't).</p>
-<pre><code class="language-cpp"><div class="source"><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="c1">  // stdout, wstring, wcout, _fileno</span><span class="cp"></span>
+<p>Now to actually print Unicode characters, you can use the code below.</p>
+<pre><code class="language-cpp"><div class="source"><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="c1">  // stdout, wstring, wcout, _fileno, fflush</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;io.h&gt;</span><span class="c1">  // _setmode</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fcntl.h&gt;</span><span class="c1">  // _O_U16TEXT</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="c1">  // wstring</span><span class="cp"></span>
 <span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span><span class="w"></span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">wprint</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">wstring</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="cm">/*  Prints a string that can have Unicode characters.</span>
-<span class="cm">        Requires #including &lt;iostream&gt;, &lt;string&gt;, &lt;io.h&gt;, and &lt;fcntl.h&gt;.</span>
+<span class="w">    </span><span class="cm">/*  Prints a string that can have Emoji/Unicode characters.</span>
+<span class="cm">        Requires #including &lt;iostream&gt; and &lt;string&gt;, and also</span>
+<span class="cm">        &lt;io.h&gt; and &lt;fcntl.h&gt; in Windows.</span>
 <span class="cm">        When calling this function, put an L in front of the string.</span>
-<span class="cm">        For example, `wprint(L&quot;Hi! \u263A&quot;);` prints `Hi! ☺`.</span>
+<span class="cm">        For example, `wprint(L&quot;Hi! ✨&quot;);` prints `Hi! ✨`.</span>
 <span class="cm">    */</span><span class="w"></span>
 <span class="cp">#ifdef _WIN32  </span><span class="c1">// if the current operating system is Windows</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_setmode</span><span class="p">(</span><span class="n">_fileno</span><span class="p">(</span><span class="n">stdout</span><span class="p">),</span><span class="w"> </span><span class="n">_O_U16TEXT</span><span class="p">);</span><span class="w"></span>
-<span class="cp">#endif</span>
+<span class="w">    </span><span class="c1">//fflush();  // &quot;If you write data to a file stream, explicitly flush the code by using fflush before you use _setmode.&quot; More details here: https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/setmode?view=msvc-170</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">previous_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_setmode</span><span class="p">(</span><span class="n">_fileno</span><span class="p">(</span><span class="n">stdout</span><span class="p">),</span><span class="w"> </span><span class="n">_O_U16TEXT</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">wcout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">message</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">previous_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_setmode</span><span class="p">(</span><span class="n">_fileno</span><span class="p">(</span><span class="n">stdout</span><span class="p">),</span><span class="w"> </span><span class="n">previous_mode</span><span class="p">);</span><span class="w"></span>
+<span class="cp">#else</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">message</span><span class="p">;</span><span class="w"></span>
+<span class="cp">#endif</span>
 <span class="p">}</span><span class="w"></span></div></code></pre><p>Example use:</p>
 <pre><code class="language-cpp"><div class="source"><span></span><span class="w">    </span><span class="n">wprint</span><span class="p">(</span><span class="sa">L</span><span class="s">&quot;Hi! </span><span class="se">\u263A</span><span class="s"> </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">// Hi! ☺ </span>
 <span class="w">    </span><span class="n">wprint</span><span class="p">(</span><span class="sa">L</span><span class="s">&quot;☠ ☢ ☣ danger! </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// ☠ ☢ ☣ danger! </span>
