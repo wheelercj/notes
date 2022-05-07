@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+
+    <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <title>Chris' notes</title>
+        <link rel='stylesheet' type='text/css' href='../style.css' media='screen' />
+        <!-- bootstrap -->
+        <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'
+            integrity='sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z' crossorigin='anonymous'>
+        <!-- bootstrap -->
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href='../about.html'>About</a></li>
+                    <li><a href='../index.html'>Home</a></li>
+                </ul>
+                <a href='../index.html' class='title'>Chris' notes</a>
+            </nav>
+        </header>
+
+        <main>
+<h1>how to use colors in terminals</h1>
+<p><img src="0f5b7459df8514bf2976d341cd08a6bc.png" alt="0f5b7459df8514bf2976d341cd08a6bc.png" /></p>
+<p>With many programming languages, you can change the color and the style of your output to a terminal using <a href="https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters">ANSI codes</a>.</p>
+<p>Here's how:</p>
+<p><strong>with C++:</strong></p>
+<pre><code class="language-cpp"><div class="source"><span></span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\x1b</span><span class="s">[31m This will be red! </span><span class="se">\x1b</span><span class="s">[0m This will be the default color.&quot;</span><span class="p">;</span><span class="w"></span></div></code></pre><p><strong>with Python:</strong></p>
+<pre><code class="language-python"><div class="source"><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[31m This will be red! </span><span class="se">\x1b</span><span class="s2">[0m This will be the default color.&quot;</span><span class="p">)</span></div></code></pre><p><img src="6ed20306c31c421dc4134b5994cb7406.png" alt="6ed20306c31c421dc4134b5994cb7406.png" /></p>
+<p>As you can see, the string did not need to change at all even with a different programming language. The odd-looking parts of the string are called ANSI codes. The first one, <code>\x1b[31m</code>, changed the color of all printed text after it to red until the second ANSI code, <code>\x1b[0m</code>, reset all following output to the defaults.</p>
+<p>To use different colors and styles, you only need to change the second number. For example, <code>\x1b[31m</code> is red, <code>\x1b[32m</code> is green, <code>\x1b[33m</code> is yellow, etc. You can also change the background color, add style such as an underline or italics, and you can even mix and match these. Apply multiple colors and/or styles at once by putting semicolons between multiple numbers, such as <code>\x1b[4;32;43m</code> to print text that is underlined and green with a yellow background. Some programming languages have libraries that make working with colors easier, such as <a href="https://github.com/tartley/colorama">Python's Colorama library</a>. Otherwise, you can see the ANSI code for many colors and styles on <a href="https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters">Wikipedia</a>, or in the images below.</p>
+<p><code>\x1b[#m</code> (replace <code>#</code> with one of the numbers below).</p>
+<p><img src="e208772a9cdeab9e39a4c69b07445c4a.png" alt="" /></p>
+<p><code>\x1b[38;5;#m</code> (replace <code>#</code> with one of the numbers below).</p>
+<p><img src="C:/Users/chris/Documents/Zettelkasten/assets/e06705eea9432d3362398773c0faac76.png" alt="e06705eea9432d3362398773c0faac76.png" title="e06705eea9432d3362398773c0faac76.png" /></p>
+<p><code>\x1b[48;5;#m</code> (replace <code>#</code> with one of the numbers below).</p>
+<p><img src="af670a843d1093a30caa2e63486426bb.png" alt="af670a843d1093a30caa2e63486426bb.png" /></p>
+<p>Or to choose from among 16,777,216 color options, use <code>\x1b[38;2;R;G;Bm</code> and replace <code>R</code>, <code>G</code>, and <code>B</code> with numbers each in the range 0-255 that represent red, green, and blue values respectively. This changes the foreground color. To change the background color, the same is true but with <code>\x1b[48;2;R;G;Bm</code>.</p>
+<p>You can also change the color of many emoji/Unicode symbols. Here's <a href="20220428172123.html">[§] how to print emoji in C++</a> (and Python, and probably other languages).</p>
+<p>To see some of the possible colors, styles, and combinations of these in your own terminal, try the code below.</p>
+<p><strong>with C++:</strong></p>
+<pre><code class="language-cpp"><div class="source"><span></span><span class="c1">// adapted from the code written by rabin utam: https://stackoverflow.com/questions/287871/how-to-print-colored-text-to-the-terminal</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">style</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"> </span><span class="n">style</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">fg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="p">;</span><span class="w"> </span><span class="n">fg</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">38</span><span class="p">;</span><span class="w"> </span><span class="n">fg</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">string</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">bg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="p">;</span><span class="w"> </span><span class="n">bg</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">48</span><span class="p">;</span><span class="w"> </span><span class="n">bg</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="n">string</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">to_string</span><span class="p">(</span><span class="n">style</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;;&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">to_string</span><span class="p">(</span><span class="n">fg</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;;&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">to_string</span><span class="p">(</span><span class="n">bg</span><span class="p">);</span><span class="w"></span>
+<span class="w">                </span><span class="n">s1</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\x1b</span><span class="s">[&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;m &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\x1b</span><span class="s">[0m&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></div></code></pre><p><strong>with Python:</strong></p>
+<pre><code class="language-python"><div class="source"><span></span><span class="c1"># Credit to rabin utam: https://stackoverflow.com/questions/287871/how-to-print-colored-text-to-the-terminal</span>
+<span class="k">def</span> <span class="nf">print_format_table</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Prints table of formatted text format options.&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">style</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">fg</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">38</span><span class="p">):</span>
+            <span class="n">s1</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="k">for</span> <span class="n">bg</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="mi">48</span><span class="p">):</span>
+                <span class="nb">format</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">style</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">fg</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">bg</span><span class="p">)])</span>
+                <span class="n">s1</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\x1b</span><span class="s1">[</span><span class="si">%s</span><span class="s1">m </span><span class="si">%s</span><span class="s1"> </span><span class="se">\x1b</span><span class="s1">[0m&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">format</span><span class="p">,</span> <span class="nb">format</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">()</span>
+
+<span class="n">print_format_table</span><span class="p">()</span></div></code></pre><p>Not all terminals display colors using ANSI codes and some have small differences in how they use ANSI codes to display some colors and styles. For example, most methods of running the code on Windows either cannot use ANSI codes at all or cannot display some things like italics, faint colors, and flashing colors. <a href="https://aka.ms/terminal">Windows Terminal</a> is highly recommended for Windows users. If you're using C++ and Windows, here's <a href="20220506214620.html">[§] how to run your C++ app in Windows Terminal</a>.</p>
+</main>
+
+<footer>
+    
+</footer>
+
+<!-- bootstrap -->
+<script src='https://code.jquery.com/jquery-3.5.1.slim.min.js'
+    integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj'
+    crossorigin='anonymous'></script>
+<script src='https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js'
+    integrity='sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN'
+    crossorigin='anonymous'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'
+    integrity='sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV'
+    crossorigin='anonymous'></script>
+<!-- bootstrap -->
+</body>
+
+</html>
