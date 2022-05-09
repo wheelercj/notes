@@ -41,7 +41,7 @@
 </ol>
 <p><strong>The steps above never need to be repeated when you create more terminal commands in the future.</strong></p>
 <ol start="3">
-<li>In the new folder, create a .bat file named after what you want the terminal command to be. For example, if you want to create a <code>todo</code> command that adds tasks to a to do list by running a Python script (<a href="https://github.com/wheelercj/refactor-todo-list/blob/master/create_task.py">like this one</a>), create <code>todo.bat</code>.</li>
+<li>In the new folder, create a .bat file named after what you want the terminal command to be. For example, if you want to create a <code>todo</code> command that adds tasks to a to do list by running a Python script (<a href="https://github.com/wheelercj/refactor-todo-list/blob/main/create_task.py">like this one</a>), create <code>todo.bat</code>.</li>
 <li>Put into this new file the terminal command(s) that will run the script/app. Continuing with the above example, the contents of the file could be <code>py -3.10 &quot;C:\Users\chris\Documents\programming\refactor todo list\create_task.py&quot; &quot;%*&quot;</code>. If you want to run an <code>.exe</code> file, you only need to enter the path to that file, surrounded by quotes if there are spaces in the file path.</li>
 </ol>
 <p>Now you can run your script by simply opening your terminal and typing the command you created without worrying what the current working directory is.</p>
@@ -50,7 +50,7 @@
 <p><strong>todo.bat</strong></p>
 <pre><code>py -3.10 &quot;C:\Users\chris\Documents\programming\refactor todo list\create_task.py&quot; &quot;%*&quot;
 </code></pre>
-<p>The <code>&quot;%*&quot;</code> at the end allows <a href="https://github.com/wheelercj/refactor-todo-list/blob/master/create_task.py">the Python script</a> to receive any number of words as arguments when I use the <code>todo</code> command.</p>
+<p>The <code>&quot;%*&quot;</code> at the end allows <a href="https://github.com/wheelercj/refactor-todo-list/blob/main/create_task.py">the Python script</a> to receive any number of words as arguments when I use the <code>todo</code> command.</p>
 <p><strong>tutor.bat</strong></p>
 <pre><code>py -3.10 C:\Users\chris\Documents\programming\opener\main.py
 start /d &quot;C:/Users/chris/AppData/Local/Microsoft/Teams/current&quot; Teams.exe
