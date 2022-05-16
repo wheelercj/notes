@@ -88,11 +88,11 @@
 <span class="p">}</span><span class="w"></span></div></code></pre><p>This is the output of the above code:</p>
 <p><img src="6248a8b6b11786b027457c03642451ad.png" alt="6248a8b6b11786b027457c03642451ad.png" /></p>
 <p>All of the dots were printed first. Then the cursor was moved up and to the middle of the all the dots and the message, &quot; hi &quot;, was printed, overwriting the dots that were there. The dots to the left of the new message were left untouched.</p>
-<h2>controlling the terminal's cursor with Windows.h</h2>
-<p><a href="https://en.wikipedia.org/wiki/Windows.h">Windows.h</a> is a header file available on all Windows computers that gives you a lot of control over the operating system. Other platforms may be able to get and use this header file, but it is (at least usually) not installed by default unlike other similar but different header files specifically made for those platforms. You can include Windows.h into your code with <code>#include &lt;Windows.h&gt;</code>.</p>
-<p>Below is an example of how to make a rotating half-circle as a loading symbol using Windows.h's <code>SetConsoleCursorPosition</code>, <code>Sleep</code>, and other functions including ones that allow detecting the size of the terminal window.</p>
+<h2>controlling the terminal's cursor with windows.h</h2>
+<p><a href="https://en.wikipedia.org/wiki/Windows.h">windows.h</a> is a header file available on all Windows computers that gives you a lot of control over the operating system. Other platforms may be able to get and use this header file, but it is (at least usually) not installed by default unlike other similar but different header files specifically made for those platforms. You can include windows.h into your code with <code>#include &lt;windows.h&gt;</code>.</p>
+<p>Below is an example of how to make a rotating half-circle as a loading symbol using windows.h's <code>SetConsoleCursorPosition</code>, <code>Sleep</code>, and other functions including ones that allow detecting the size of the terminal window.</p>
 <p><img src="loading_symbol.gif" alt="loading_symbol.gif" /></p>
-<pre><code class="language-cpp"><div class="source"><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Windows.h&gt;</span><span class="cp"></span>
+<pre><code class="language-cpp"><div class="source"><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;windows.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
 
