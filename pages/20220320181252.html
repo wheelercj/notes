@@ -41,36 +41,33 @@
 </ol>
 <p><strong>The steps above never need to be repeated when you create more terminal commands in the future.</strong></p>
 <ol start="3">
-<li>In the new folder, create a .bat file named after what you want the terminal command to be. For example, if you want to create a <code>todo</code> command that adds tasks to a to do list by running a Python script (<a href="https://github.com/wheelercj/refactor-todo-list/blob/main/create_task.py">like this one</a>), create <code>todo.bat</code>.</li>
-<li>Put into this new file the terminal command(s) that will run the script/app. Continuing with the above example, the contents of the file could be <code>py -3.10 &quot;C:\Users\chris\Documents\programming\refactor todo list\create_task.py&quot; &quot;%*&quot;</code>. If you want to run an <code>.exe</code> file, you only need to enter the path to that file, surrounded by quotes if there are spaces in the file path.</li>
+<li>In the new folder, create a script file (e.g. a file that ends with <code>.py</code> if you want to use <a href="https://wheelercj.github.io/notes/pages/20220109123727.html">Python</a>, or <code>.bat</code> or <code>.cmd</code> if you want to use <a href="https://www.tutorialspoint.com/batch_script/batch_script_quick_guide.htm">Batch scripts</a>, or <code>.ps1</code> if you would prefer to use <a href="https://devblogs.microsoft.com/scripting/table-of-basic-powershell-commands/">PowerShell commands</a>). The file name must start with what you want the terminal command to be. For example, if you want to create a <code>project</code> command that uses Batch to open a bunch of applications and/or websites at once for a project you're working on, create <code>project.bat</code>.</li>
+<li>Put terminal command(s) into this new file. Continuing with the above example, the contents of the file could be something like this Batch file I use when I start remote tutoring sessions:</li>
 </ol>
-<p>Now you can run your script by simply opening your terminal and typing the command you created without worrying what the current working directory is.</p>
-<h3>sample .bat files that I use</h3>
-<p>The contents of .bat files run as if they had been typed into Command Prompt.</p>
+<pre><code>start &quot;&quot; &quot;https://web.penjiapp.com/communities/xcvnssap3/teach/drop-in-waitlist/vosiueu8c/hours/ovxueaqodm&quot;
+start &quot;&quot; &quot;C:/Users/chris/AppData/Local/Microsoft/Teams/current/teams.exe&quot;
+start &quot;first zoom&quot; C:\Users\chris\AppData\Roaming\Zoom\bin\zoom.exe
+start &quot;second zoom&quot; C:\Users\chris\AppData\Roaming\Zoom\bin\Zoom1.exe
+&quot;C:/Users/chris/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/zq/zq.lnk&quot;
+</code></pre>
+<p>Now you can run your script by simply opening your terminal and typing the command you created without worrying what the current working directory is!</p>
+<h3>some other scripts that I use</h3>
 <p><strong>todo.bat</strong></p>
 <pre><code>py -3.10 &quot;C:\Users\chris\Documents\programming\refactor todo list\create_task.py&quot; &quot;%*&quot;
 </code></pre>
-<p>The <code>&quot;%*&quot;</code> at the end allows <a href="https://github.com/wheelercj/refactor-todo-list/blob/main/create_task.py">the Python script</a> to receive any number of words as arguments when I use the <code>todo</code> command.</p>
-<p><strong>tutor.bat</strong></p>
-<pre><code>py -3.10 C:\Users\chris\Documents\programming\opener\main.py
-start /d &quot;C:/Users/chris/AppData/Local/Microsoft/Teams/current&quot; Teams.exe
-start /d &quot;C:/Users/chris/AppData/Roaming/Zoom/bin&quot; Zoom.exe
-timeout 2
-C:/Users/chris/Documents/programming/terminal_bindings/zq.bat
+<p>The <code>&quot;%*&quot;</code> at the end allows <a href="https://github.com/wheelercj/refactor-todo-list/blob/main/create_task.py">the Python script</a> to receive any number of words as arguments when I use the <code>todo</code> command. For example, I could enter <code>todo buy oranges and apples</code> to add &quot;buy oranges and apples&quot; to my to do list.</p>
+<p><strong>venv.ps1</strong></p>
+<pre><code>venv/Scripts/Activate.ps1
 </code></pre>
-<p>This command starts four apps I use while I'm tutoring. There's a <code>timeout 2</code> to pause the script for a few seconds so that an error message from Microsoft Teams doesn't mess up the output from what runs after it. I decided to use <code>start /d</code> as the start of the commands to run executable files because without that, there were some cases where one of them would freeze and prevent the rest of the file from running.</p>
-<p><strong>zq.bat</strong></p>
-<pre><code>py -3.10 C:\Users\chris\Documents\programming\zq\src\zq\main.py
-</code></pre>
-<p>For <a href="https://github.com/wheelercj/zq">an app</a> that shows a welcome message and approximate wait times in zoom meetings.</p>
-<p><strong>radix.bat</strong></p>
-<pre><code>&quot;C:\Users\chris\Documents\programming\Radix-Converter\Debug\Radix-Converter.exe&quot;
-</code></pre>
-<p>Here's the command to run the exe for <a href="https://github.com/wheelercj/Radix-Converter">a C++ program I wrote</a>. No need for <code>start /d</code> here.</p>
+<p>This makes it easy to activate a Python virtual environment for PowerShell named <code>venv</code> in the current working directory.</p>
 <p><strong>binds.bat</strong></p>
 <pre><code>explorer C:\Users\chris\Documents\programming\terminal_bindings
 </code></pre>
 <p>This opens the folder I keep these files in.</p>
+<p><strong>radix.bat</strong></p>
+<pre><code>&quot;C:\Users\chris\Documents\programming\Radix-Converter\Debug\Radix-Converter.exe&quot;
+</code></pre>
+<p>This is the command to run the exe for <a href="https://github.com/wheelercj/Radix-Converter">a C++ program I wrote</a>.</p>
 </main>
 
 <footer>
