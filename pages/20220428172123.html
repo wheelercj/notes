@@ -39,6 +39,8 @@
 <p>Here's how these look in Windows Terminal.</p>
 <p><img src="01b5a53372f219ec1a40499e6ced9e77.png" alt="01b5a53372f219ec1a40499e6ced9e77.png" /></p>
 <p>You can also change the color of many of these by using ANSI codes. Here's <a href="20220324232528.html">[§] how to use colors in terminals</a>.</p>
+<p>You can paste these symbols directly into your code. With C++ in Visual Studio, you might get a message asking you to confirm whether to save the Unicode symbols as Unicode.</p>
+<p><img src="codepage_question.jpg" alt="Unicode confirmation request" /></p>
 <p>Now to actually print Unicode characters, you can use the cross-platform code below, or Mac and Linux users can just print like normal if the code doesn't need to be cross-platform.</p>
 <pre><code class="language-cpp"><div class="source"><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="c1">  // stdout, wstring, wcout, _fileno, fflush</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="c1">  // wstring</span><span class="cp"></span>
