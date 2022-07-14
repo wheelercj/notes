@@ -68,6 +68,15 @@ start &quot;second zoom&quot; C:\Users\chris\AppData\Roaming\Zoom\bin\Zoom1.exe
 <pre><code>&quot;C:\Users\chris\Documents\programming\Radix-Converter\Debug\Radix-Converter.exe&quot;
 </code></pre>
 <p>This is the command to run the exe for <a href="https://github.com/wheelercj/Radix-Converter">a C++ program I wrote</a>.</p>
+<p><strong>rq.bat</strong></p>
+<pre><code>@echo off
+if [%1]==[] goto :noarg
+py -3.9 C:/Users/chris/Documents/programming/run-quick/main.py %1
+goto :eof
+:noarg
+py -3.9 C:/Users/chris/Documents/programming/run-quick/main.py
+</code></pre>
+<p>Here's a script that takes one or zero arguments and calls another script with the correct number of arguments.</p>
 </main>
 
 <footer>
