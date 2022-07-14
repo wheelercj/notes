@@ -44,7 +44,8 @@
 <li>In the new folder, create a script file (e.g. a file that ends with <code>.py</code> if you want to use <a href="https://wheelercj.github.io/notes/pages/20220109123727.html">Python</a>, or <code>.bat</code> or <code>.cmd</code> if you want to use <a href="https://www.tutorialspoint.com/batch_script/batch_script_quick_guide.htm">Batch scripts</a>, or <code>.ps1</code> if you would prefer to use <a href="https://devblogs.microsoft.com/scripting/table-of-basic-powershell-commands/">PowerShell commands</a>). The file name must start with what you want the terminal command to be. For example, if you want to create a <code>project</code> command that uses Batch to open a bunch of applications and/or websites at once for a project you're working on, create <code>project.bat</code>.</li>
 <li>Put terminal command(s) into this new file. Continuing with the above example, the contents of the file could be something like this Batch file I use when I start remote tutoring sessions:</li>
 </ol>
-<pre><code>start &quot;&quot; &quot;https://web.penjiapp.com/communities/xcvnssap3/teach/drop-in-waitlist/vosiueu8c/hours/ovxueaqodm&quot;
+<pre><code>@echo off
+start &quot;&quot; &quot;https://web.penjiapp.com/communities/xcvnssap3/teach/drop-in-waitlist/vosiueu8c/hours/ovxueaqodm&quot;
 start &quot;&quot; &quot;C:/Users/chris/AppData/Local/Microsoft/Teams/current/teams.exe&quot;
 start &quot;first zoom&quot; C:\Users\chris\AppData\Roaming\Zoom\bin\zoom.exe
 start &quot;second zoom&quot; C:\Users\chris\AppData\Roaming\Zoom\bin\Zoom1.exe
@@ -53,7 +54,8 @@ start &quot;second zoom&quot; C:\Users\chris\AppData\Roaming\Zoom\bin\Zoom1.exe
 <p>Now you can run your script by simply opening your terminal and typing the command you created without worrying what the current working directory is!</p>
 <h3>some other scripts that I use</h3>
 <p><strong>todo.bat</strong></p>
-<pre><code>py -3.10 &quot;C:\Users\chris\Documents\programming\refactor todo list\create_task.py&quot; &quot;%*&quot;
+<pre><code>@echo off
+py -3.10 &quot;C:\Users\chris\Documents\programming\refactor todo list\create_task.py&quot; &quot;%*&quot;
 </code></pre>
 <p>The <code>&quot;%*&quot;</code> at the end allows <a href="https://github.com/wheelercj/refactor-todo-list/blob/main/create_task.py">the Python script</a> to receive any number of words as arguments when I use the <code>todo</code> command. For example, I could enter <code>todo buy oranges and apples</code> to add &quot;buy oranges and apples&quot; to my to do list.</p>
 <p><strong>venv.ps1</strong></p>
@@ -61,11 +63,13 @@ start &quot;second zoom&quot; C:\Users\chris\AppData\Roaming\Zoom\bin\Zoom1.exe
 </code></pre>
 <p>This makes it easy to activate a Python virtual environment for PowerShell named <code>venv</code> in the current working directory.</p>
 <p><strong>binds.bat</strong></p>
-<pre><code>explorer C:\Users\chris\Documents\programming\terminal_bindings
+<pre><code>@echo off
+explorer C:\Users\chris\Documents\programming\terminal_bindings
 </code></pre>
 <p>This opens the folder I keep these files in.</p>
 <p><strong>radix.bat</strong></p>
-<pre><code>&quot;C:\Users\chris\Documents\programming\Radix-Converter\Debug\Radix-Converter.exe&quot;
+<pre><code>@echo off
+&quot;C:\Users\chris\Documents\programming\Radix-Converter\Debug\Radix-Converter.exe&quot;
 </code></pre>
 <p>This is the command to run the exe for <a href="https://github.com/wheelercj/Radix-Converter">a C++ program I wrote</a>.</p>
 <p><strong>rq.bat</strong></p>
