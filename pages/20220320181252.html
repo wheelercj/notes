@@ -53,6 +53,15 @@ start &quot;second zoom&quot; C:\Users\chris\AppData\Roaming\Zoom\bin\Zoom1.exe
 </code></pre>
 <p>Now you can run your script by simply opening your terminal and typing the command you created without worrying what the current working directory is!</p>
 <h3>some other scripts that I use</h3>
+<p><strong>tias.bat</strong></p>
+<pre><code>@echo off
+if [%1]==[] goto :noarg
+py -m tias %1
+goto :eof
+:noarg
+py -m tias
+</code></pre>
+<p>The above script takes one or zero arguments and calls <a href="https://github.com/wheelercj/tias">a Python package</a> with the correct number of arguments.</p>
 <p><strong>todo.bat</strong></p>
 <pre><code>@echo off
 py -3.10 &quot;C:\Users\chris\Documents\programming\refactor todo list\create_task.py&quot; &quot;%*&quot;
@@ -72,15 +81,6 @@ explorer C:\Users\chris\Documents\programming\terminal_bindings
 &quot;C:\Users\chris\Documents\programming\Radix-Converter\Debug\Radix-Converter.exe&quot;
 </code></pre>
 <p>This is the command to run the exe for <a href="https://github.com/wheelercj/Radix-Converter">a C++ program I wrote</a>.</p>
-<p><strong>rq.bat</strong></p>
-<pre><code>@echo off
-if [%1]==[] goto :noarg
-py -3.9 C:/Users/chris/Documents/programming/run-quick/main.py %1
-goto :eof
-:noarg
-py -3.9 C:/Users/chris/Documents/programming/run-quick/main.py
-</code></pre>
-<p>Here's a script that takes one or zero arguments and calls another script with the correct number of arguments.</p>
 </main>
 
 <footer>
