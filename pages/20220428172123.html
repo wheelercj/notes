@@ -27,7 +27,7 @@
         <main>
 <h1>how to print emoji with C++</h1>
 <p><img src="emoji_in_terminal.png" alt="emoji in terminal" /></p>
-<p>Emoji and other symbols can be printed with C++ by copying the emoji itself into your code or by using a <a href="https://en.wikipedia.org/wiki/Unicode">Unicode code point</a>. On Mac and Linux, working with emoji is straightforward and doesn't require any tricks. With Windows you will need to use a modern terminal like <a href="https://aka.ms/terminal">Windows Terminal</a> and the code below.</p>
+<p>Emoji and other <a href="https://en.wikipedia.org/wiki/Unicode">Unicode</a> symbols can be printed with C++ by copying the symbol itself into your code or by using a Unicode code point. You can find emoji and other symbols at sites like <a href="https://unicode-table.com">unicode-table.com</a> or with a keyboard shortcut (<code>Windows+.</code> on Windows, <code>ctrl+cmd+space</code> on Mac, and <code>ctrl+.</code> on some Linux distros). On Mac and Linux, working with emoji in C++ is straightforward and doesn't require any tricks. With Windows you will need to use a modern terminal like <a href="https://aka.ms/terminal">Windows Terminal</a> and the code below.</p>
 <pre><code class="language-cpp"><div class="source"><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="c1">  // wcout</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="c1">  // wstring</span><span class="cp"></span>
 <span class="cp">#ifdef _WIN32  </span><span class="c1">// if the current operating system is Windows</span>
@@ -39,6 +39,7 @@
 <span class="w">    </span><span class="cm">/*  Prints a string that can have any emoji or Unicode characters.</span>
 <span class="cm">        When creating a wstring, put an L in front of it.</span>
 <span class="cm">        For example, `wprint(L&quot;Hi! 🔥&quot;);` prints `Hi! 🔥`.</span>
+<span class="cm">        Your file must be saved in the UTF-8 (_with_ BOM/signature) encoding.</span>
 <span class="cm">    */</span><span class="w"></span>
 <span class="cp">#ifdef _WIN32</span>
 <span class="w">    </span><span class="n">HANDLE</span><span class="w"> </span><span class="n">handle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetStdHandle</span><span class="p">(</span><span class="n">STD_OUTPUT_HANDLE</span><span class="p">);</span><span class="w"></span>
@@ -47,12 +48,12 @@
 <span class="cp">#else</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">wcout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">message</span><span class="p">;</span><span class="w"></span>
 <span class="cp">#endif</span>
-<span class="p">}</span><span class="w"></span></div></code></pre><p>You can find emoji and other Unicode symbols at sites like <a href="https://unicode-table.com">unicode-table.com</a> or with a keyboard shortcut (<code>Windows+.</code> on Windows). One downside of the code above is that <code>std::wstring</code>s are not truly cross-platform. <a href="https://github.com/wheelercj/ynot">Here</a> is a library I made that has a similar print function (it can print any Unicode characters) except that it takes a <code>std::string</code> as an argument instead.</p>
+<span class="p">}</span><span class="w"></span></div></code></pre><p>One downside of the code above is that <code>std::wstring</code>s are not truly cross-platform. <a href="https://github.com/wheelercj/ynot">Here</a> is a library I made that has a similar print function (it can print any Unicode characters) that takes a <code>std::string</code> as an argument instead.</p>
 <h2>further reading</h2>
 <ul>
-<li>You can change the color of many Unicode symbols by using ANSI codes. Here's <a href="20220324232528.html">[§] how to use colors in terminals</a>.</li>
+<li>You can change the color of many Unicode symbols by using ANSI codes. See <a href="20220324232528.html">[§] how to use colors in terminals</a>.</li>
 <li><a href="20220506214620.html">[§] how to run your C++ app in Windows Terminal</a></li>
-<li><a href="https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-Unicode-and-character-sets-no-excuses">Unicode and character sets</a></li>
+<li><a href="https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-Unicode-and-character-sets-no-excuses">The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)</a> by Joel Spolsky</li>
 </ul>
 <p>If you want to see all Unicode symbols in your terminal, you can do so easily with Python:</p>
 <pre><code class="language-python"><div class="source"><span></span><span class="kn">import</span> <span class="nn">unicodedata</span>
