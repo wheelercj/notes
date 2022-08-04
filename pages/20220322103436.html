@@ -27,7 +27,7 @@
         <main>
 <h1>how to install a local Python project</h1>
 <p>You can make your own projects installable into your other projects as if you had downloaded them from PyPI following these steps.</p>
-<p><strong>1.</strong> In the project's root folder, create a file named setup.py with these exact contents:</p>
+<p><strong>1.</strong> In the project's root folder, create a file named setup.py with these contents:</p>
 <pre><code class="language-python"><div class="source"><span></span><span class="kn">import</span> <span class="nn">setuptools</span>
 <span class="n">setuptools</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span></div></code></pre><p><strong>2.</strong> In the same folder, create a file named setup.cfg with these contents:</p>
 <pre><code>[metadata]
@@ -38,10 +38,11 @@ packages = your_package_name_here
 python_requires = &gt;=3.7
 package_dir =
     =.
+
 </code></pre>
 <p>You may want to change the app name, package name, and minimum Python version. There's also a lot more that can be added to this file to help with certain situations (see links below).</p>
 <p><strong>3.</strong> In each package folder in your project, create an empty file named __init__.py.</p>
-<p><strong>4.</strong> Use this terminal command while in the module's directory: <code>python -m pip install -e .</code></p>
+<p><strong>4.</strong> Use this terminal command while in the project's directory: <code>pip install -e .</code></p>
 <p>Now you can import your projects using statements like these:</p>
 <pre><code class="language-python"><div class="source"><span></span><span class="kn">from</span> <span class="nn">app_name.module_name</span> <span class="kn">import</span> <span class="n">class_or_function_or_variable</span>
 <span class="kn">from</span> <span class="nn">app_name</span> <span class="kn">import</span> <span class="n">other_module_name</span></div></code></pre><p>You might want to add import statements to your __init__.py files to simplify the import statements used for this project elsewhere.</p>
