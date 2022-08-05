@@ -27,10 +27,10 @@
         <main>
 <h1>how to create custom terminal commands</h1>
 <p>Creating custom terminal commands can change having to type something long like this:</p>
-<p><code>py -3.10 &quot;C:\Users\chris\Documents\programming\refactor todo list\create_task.py&quot;</code></p>
+<p><code>py -3.10 &quot;C:\Users\chris\Documents\programming\refactor-todo-list\create_task.py&quot;</code></p>
 <p>to something like this:</p>
 <p><code>todo</code></p>
-<p>And it will work no matter which directory the terminal is in. How to create custom commands depends on your operating system.</p>
+<p>This will work no matter which directory the terminal is in and can temporarily activate a virtual environment if needed. How to create custom commands depends on your operating system.</p>
 <h2>Mac and Linux</h2>
 <p><a href="https://medium.com/devnetwork/how-to-create-your-own-custom-terminal-commands-c5008782a78e">This guide</a> seems well-written (no need to rewrite the wheel).</p>
 <h2>Windows</h2>
@@ -51,26 +51,35 @@ start &quot;first zoom&quot; C:\Users\chris\AppData\Roaming\Zoom\bin\zoom.exe
 start &quot;second zoom&quot; C:\Users\chris\AppData\Roaming\Zoom\bin\Zoom1.exe
 &quot;C:/Users/chris/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/zq/zq.lnk&quot;
 </code></pre>
-<p>Now you can run your script by simply opening your terminal and typing the command you created without worrying what the current working directory is!</p>
+<p>(This example script opens a website and a few applications.) Now you can run your script by simply opening your terminal and typing the command you created without worrying what the current working directory is!</p>
 <h3>some other scripts that I use</h3>
-<p><strong>tias.bat</strong></p>
-<pre><code>@echo off
-if [%1]==[] goto :noarg
-py -m tias %1
-goto :eof
-:noarg
-py -m tias
+<p><strong>tias.ps1</strong></p>
+<pre><code>C:/Users/chris/Documents/programming/tias/venv/Scripts/Activate.ps1
+try {
+    py -m tias &quot;$args&quot;
+}
+catch {
+}
+finally {
+    deactivate
+}
 </code></pre>
-<p>The above script takes one or zero arguments and calls <a href="https://github.com/wheelercj/tias">a Python package</a> with the correct number of arguments.</p>
-<p><strong>todo.bat</strong></p>
-<pre><code>@echo off
-py -3.10 &quot;C:\Users\chris\Documents\programming\refactor todo list\create_task.py&quot; &quot;%*&quot;
+<p>The above script activates a virtual environment, runs <a href="https://github.com/wheelercj/tias">a Python package</a> optionally with an argument, and then deactivates the virtual environment even if I press Ctrl+c to end the script.</p>
+<p><strong>todo.ps1</strong></p>
+<pre><code>C:/Users/chris/Documents/programming/refactor-todo-list/venv/Scripts/Activate.ps1
+py &quot;C:/Users/chris/Documents/programming/refactor-todo-list/create_task.py&quot; &quot;$args&quot;
+deactivate
 </code></pre>
-<p>The <code>&quot;%*&quot;</code> at the end allows <a href="https://github.com/wheelercj/refactor-todo-list/blob/main/create_task.py">the Python script</a> to receive any number of words as arguments when I use the <code>todo</code> command. For example, I could enter <code>todo buy oranges and apples</code> to add &quot;buy oranges and apples&quot; to my to do list.</p>
+<p>The <code>$args</code> at the end of the second line allows <a href="https://github.com/wheelercj/refactor-todo-list/blob/main/create_task.py">the Python script</a> to receive any number of words as arguments when I use the <code>todo</code> command. For example, I could enter <code>todo buy oranges and apples</code> to add &quot;buy oranges and apples&quot; to my to do list.</p>
 <p><strong>venv.ps1</strong></p>
-<pre><code>venv/Scripts/Activate.ps1
+<pre><code>if ($args) {
+    Invoke-Expression &quot;venv$args/Scripts/Activate.ps1&quot;
+}
+else {
+    venv/Scripts/Activate.ps1
+}
 </code></pre>
-<p>This makes it easy to activate a Python virtual environment for PowerShell named <code>venv</code> in the current working directory.</p>
+<p>With this, I can activate a Python virtual environment named &quot;venv&quot; in the current working directory by simply entering <code>venv</code>. Also, if I have any other virtual environments with something after &quot;venv&quot; in their name, such as &quot;venv39&quot;, I can activate them by entering their name with a space, e.g. <code>venv 39</code>.</p>
 <p><strong>binds.bat</strong></p>
 <pre><code>@echo off
 explorer C:\Users\chris\Documents\programming\terminal_bindings
@@ -81,6 +90,17 @@ explorer C:\Users\chris\Documents\programming\terminal_bindings
 &quot;C:\Users\chris\Documents\programming\Radix-Converter\Debug\Radix-Converter.exe&quot;
 </code></pre>
 <p>This is the command to run the exe for <a href="https://github.com/wheelercj/Radix-Converter">a C++ program I wrote</a>.</p>
+<p><strong>zoom.bat</strong></p>
+<pre><code>@echo off
+start &quot;first zoom&quot; C:\Users\chris\AppData\Roaming\Zoom\bin\Zoom.exe
+if %1%==1 exit 0
+start &quot;second zoom&quot; C:\Users\chris\AppData\Roaming\Zoom\bin\Zoom1.exe
+if %1%==2 exit 0
+start &quot;third zoom&quot; C:\Users\chris\AppData\Roaming\Zoom\bin\Zoom2.exe
+if %1%==3 exit 0
+start &quot;fourth zoom&quot; C:\Users\chris\AppData\Roaming\Zoom\bin\Zoom3.exe
+</code></pre>
+<p>I made copies of my zoom.exe file so that I can have multiple instances of zoom open at the same time. This script lets me easily open the number of instances I want. For example, I can enter <code>zoom 2</code> to open 2 instances of zoom.</p>
 </main>
 
 <footer>
