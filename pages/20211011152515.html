@@ -67,6 +67,11 @@
 <span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span><span class="w"> </span><span class="n">num2</span><span class="p">);</span><span class="w">  </span><span class="c1">// 2 1</span>
 <span class="w">    </span><span class="n">swap_pointers2</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span><span class="w"> </span><span class="n">num2</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span><span class="w"> </span><span class="n">num2</span><span class="p">);</span><span class="w">  </span><span class="c1">// 1 2</span>
+
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">num1</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">num1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">num2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span></div></code></pre><p>The last two options are more efficient because the total amount of data copied while the functions are running is only a few memory addresses, even if they point to variables taking up massive amounts of memory. The most significant syntax difference is in the function calls; <code>swap_pointers2</code>'s arguments don't need any special characters next to them just for the function to work.</p>
 <p>Of course, all of these swap functions can be used on array elements, such as <code>swap_pointers2(numbers[3], numbers[4]);</code>, where <code>numbers</code> is an array of pointers.</p>
