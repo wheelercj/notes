@@ -66,10 +66,7 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">is_prime</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>  <span class="c1"># True</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">is_prime</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>  <span class="c1"># False</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">is_prime</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span>  <span class="c1"># False</span></div></code></pre><p><a href="https://regex101.com/r/Rkeot5/1">Same in JavaScript</a>.</p>
-<h2>2021/5/21</h2>
-<p>How to (unsafely!) run asynchronous Python code that the user wrote:</p>
-<pre><code class="language-python"><div class="source"><span></span><span class="kn">import</span> <span class="nn">textwrap</span>
-<span class="n">exec</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;async def func():</span><span class="se">\n</span><span class="s1">    try:</span><span class="se">\n</span><span class="si">{</span><span class="n">textwrap</span><span class="o">.</span><span class="n">indent</span><span class="p">(</span><span class="n">users_input</span><span class="p">,</span> <span class="s2">&quot;        &quot;</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s1">    except Exception as e:</span><span class="se">\n</span><span class="s1">        await ctx.send(&quot;Python error: %s&quot; % e)</span><span class="se">\n</span><span class="s1">asyncio.get_running_loop().create_task(func())&#39;</span><span class="p">)</span></div></code></pre></main>
+</main>
 
 <footer>
     
