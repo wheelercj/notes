@@ -64,7 +64,7 @@ finally {
     deactivate
 }
 </code></pre>
-<p>The above script activates a virtual environment, runs <a href="https://github.com/wheelercj/tias">a Python package</a> optionally with an argument, and then deactivates the virtual environment even if I press Ctrl+c to end the script.</p>
+<p>Before I learned <a href="https://stackoverflow.com/questions/48884796/how-to-set-up-entry-points-in-setup-cfg">Python's tools for creating custom terminal commands</a>, I used the above script which activates a virtual environment, runs <a href="https://github.com/wheelercj/tias">a Python package</a> optionally with an argument, and then deactivates the virtual environment even if I press Ctrl+c to end the script.</p>
 <p><strong>todo.ps1</strong></p>
 <pre><code>C:/Users/chris/Documents/programming/refactor-todo-list/venv/Scripts/Activate.ps1
 py &quot;C:/Users/chris/Documents/programming/refactor-todo-list/create_task.py&quot; &quot;$args&quot;
