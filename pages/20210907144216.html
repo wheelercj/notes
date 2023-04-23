@@ -42,7 +42,7 @@
 <li>Use <code>git pull</code>.</li>
 <li>Create a new branch with a descriptive name and checkout the branch.</li>
 <li>Make the commit(s) on the branch you created.</li>
-<li>When the commit(s) on your branch are ready to be combined with another branch, use <code>git fetch</code> and then <code>git status</code> to make sure you have the latest commits. If not, checkout the main branch, pull, either rebase or merge (merge if commit order matters, rebase otherwise), and then checkout your newer branch.</li>
+<li>When the commit(s) on your branch are ready to be combined with another branch, use <code>git fetch</code> and then <code>git status</code> to make sure you have the latest commits. If not, checkout the main branch, pull, checkout your branch, and either rebase or merge the main branch into your branch (merge if commit order matters, rebase otherwise).</li>
 <li>Push the branch with the <a href="https://git-scm.com/docs/git-push#Documentation/git-push.txt--u"><code>-u</code> option</a>, e.g. <code>git push -u origin my-feature</code>.</li>
 <li>Make and accept a pull request on GitHub between the two branches.</li>
 <li>Delete the newer branch on GitHub (and optionally the local newer branch as well).</li>
