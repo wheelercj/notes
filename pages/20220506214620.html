@@ -26,7 +26,6 @@
 
         <main>
 <h1>how to run your C++ app in Windows Terminal</h1>
-<p>Some IDEs in Windows 10 (not Windows 11) like Visual Studio are likely to display your app's output in a window that is missing many features. For example, Visual Studio's default output window cannot display most emoji and some text colors and styles. You can download <a href="https://aka.ms/terminal">Windows Terminal</a> and run your code in it by following the steps below to get more output features.</p>
 <ol>
 <li>Build your app (generate an .exe file) if you haven't already.</li>
 </ol>
@@ -34,13 +33,15 @@
 <ol start="2">
 <li><p>Copy the path of the .exe file (detailed steps below).</p>
 </li>
-<li><p>Open Windows Terminal</p>
+<li><p>Open Windows Terminal.</p>
 </li>
-<li><p>Type <code>&amp;</code>, a space, paste the path to your .exe file, and press Enter.</p>
+<li><p>Paste the path to your .exe file and delete the quotation marks around it. It should look something like this:</p>
 </li>
 </ol>
-<p>It will look something like this:</p>
-<pre><code class="language-powershell"><div class="source"><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">chris</span><span class="p">&gt;</span> <span class="p">&amp;</span> <span class="s2">&quot;C:\Users\chris\source\repos\Project1\x64\Debug\Project1.exe&quot;</span></div></code></pre><p>If you want to run the app again, just press the up arrow until the command to run it reappears. If you will run apps with commands like this often, you might want to know <a href="20220320181252.html">[§] how to create custom terminal commands</a>.</p>
+<pre><code class="language-powershell"><div class="source"><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">chris</span><span class="p">&gt;</span> <span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">chris</span><span class="p">\</span><span class="n">source</span><span class="p">\</span><span class="n">repos</span><span class="p">\</span><span class="n">Project1</span><span class="p">\</span><span class="n">x64</span><span class="p">\</span><span class="n">Debug</span><span class="p">\</span><span class="n">Project1</span><span class="p">.</span><span class="n">exe</span></div></code></pre><ol start="5">
+<li>Press enter.</li>
+</ol>
+<p>If you want to run the app again, just press the up arrow until the command to run it reappears. If you will run apps with commands like this often, you might want to know <a href="20220320181252.html">[§] how to create custom terminal commands</a> and <a href="20230206213946.html">[§] how to customize terminal prompts in Windows</a>.</p>
 <h2>how to copy the path of your app's .exe file</h2>
 <p>These instructions are mostly for Visual Studio. You must have successfully built your app at least once for the .exe to exist.</p>
 <ol>
@@ -57,7 +58,11 @@
 </ol>
 <p><img src="4e258db0bb6ce8b7751461bcb456d710.png" alt="4e258db0bb6ce8b7751461bcb456d710.png" /></p>
 <ol start="4">
-<li>Select the .exe file and in File Explorer's &quot;Home&quot; tab, click &quot;Copy path&quot;.</li>
+<li>Get the .exe file's path.<ul>
+<li><strong>Windows 10</strong>: select the .exe file and in File Explorer's &quot;Home&quot; tab, click &quot;Copy path&quot;.</li>
+<li><strong>Windows 11</strong>: right click the .exe file and choose &quot;Copy as path.&quot;</li>
+</ul>
+</li>
 </ol>
 </main>
 
