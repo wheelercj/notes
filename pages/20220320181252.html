@@ -53,24 +53,11 @@ start &quot;second zoom&quot; C:\Users\chris\AppData\Roaming\Zoom\bin\Zoom1.exe
 </code></pre>
 <p>(This example script opens a website and a few applications.) Now you can run your script by simply opening your terminal and typing the command you created without worrying what the current working directory is!</p>
 <h3>some other scripts that I use</h3>
-<p><strong>tias.ps1</strong></p>
-<pre><code>C:/Users/chris/Documents/programming/tias/venv/Scripts/Activate.ps1
-try {
-    py -m tias &quot;$args&quot;
-}
-catch {
-}
-finally {
-    deactivate
-}
+<p><strong>binds.bat</strong></p>
+<pre><code>@echo off
+explorer C:\Users\chris\Documents\programming\terminal_bindings
 </code></pre>
-<p>Before I learned <a href="https://stackoverflow.com/questions/48884796/how-to-set-up-entry-points-in-setup-cfg">Python's tools for creating custom terminal commands</a>, I used the above script which activates a virtual environment, runs <a href="https://github.com/wheelercj/tias">a Python package</a> optionally with an argument, and then deactivates the virtual environment even if I press Ctrl+c to end the script.</p>
-<p><strong>todo.ps1</strong></p>
-<pre><code>C:/Users/chris/Documents/programming/refactor-todo-list/venv/Scripts/Activate.ps1
-py &quot;C:/Users/chris/Documents/programming/refactor-todo-list/create_task.py&quot; &quot;$args&quot;
-deactivate
-</code></pre>
-<p>The <code>$args</code> at the end of the second line allows <a href="https://github.com/wheelercj/refactor-todo-list/blob/main/create_task.py">the Python script</a> to receive any number of words as arguments when I use the <code>todo</code> command. For example, I could enter <code>todo buy oranges and apples</code> to add &quot;buy oranges and apples&quot; to my to do list.</p>
+<p>This opens the folder I keep these files in.</p>
 <p><strong>venv.ps1</strong></p>
 <pre><code>if ($args) {
     Invoke-Expression &quot;venv$args/Scripts/Activate.ps1&quot;
@@ -80,11 +67,31 @@ else {
 }
 </code></pre>
 <p>With this, I can activate a Python virtual environment named &quot;venv&quot; in the current working directory by simply entering <code>venv</code>. Also, if I have any other virtual environments with something after &quot;venv&quot; in their name, such as &quot;venv39&quot;, I can activate them by entering their name with a space, e.g. <code>venv 39</code>.</p>
-<p><strong>binds.bat</strong></p>
-<pre><code>@echo off
-explorer C:\Users\chris\Documents\programming\terminal_bindings
+<p><strong>tias.ps1</strong></p>
+<pre><code>C:/Users/chris/Documents/programming/tias/venv/Scripts/Activate.ps1
+try {
+    py -m tias &quot;$args&quot;
+}
+finally {
+    deactivate
+}
 </code></pre>
-<p>This opens the folder I keep these files in.</p>
+<p>Although Python itself also has <a href="https://stackoverflow.com/questions/48884796/how-to-set-up-entry-points-in-setup-cfg">tools for creating custom terminal commands</a>, I used the above script which activates a virtual environment, runs <a href="https://github.com/wheelercj/tias">a Python package</a> optionally with an argument, and then deactivates the virtual environment even if I press Ctrl+c to end the script.</p>
+<p><strong>todo.ps1</strong></p>
+<pre><code>C:/Users/chris/Documents/programming/refactor-todo-list/venv/Scripts/Activate.ps1
+py &quot;C:/Users/chris/Documents/programming/refactor-todo-list/create_task.py&quot; &quot;$args&quot;
+deactivate
+</code></pre>
+<p>The <code>&quot;$args&quot;</code> allows <a href="https://github.com/wheelercj/refactor-todo-list/blob/main/create_task.py">the Python script</a> to receive any number of words as arguments when I use the <code>todo</code> command. For example, I could enter <code>todo buy oranges and apples</code> to add &quot;buy oranges and apples&quot; to my to do list.</p>
+<p><strong>name.ps1</strong></p>
+<pre><code class="language-powershell"><div class="source"><span></span><span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$originalPath</span> <span class="p">=</span> <span class="nb">Get-Location</span>
+    <span class="nb">cd </span><span class="n">C</span><span class="p">:/</span><span class="n">Users</span><span class="p">/</span><span class="n">chris</span><span class="p">/</span><span class="n">Documents</span><span class="p">/</span><span class="n">programming</span><span class="p">/</span><span class="n">namer</span>
+    <span class="n">py</span> <span class="n">main</span><span class="p">.</span><span class="n">py</span> <span class="nv">$args</span>
+<span class="p">}</span>
+<span class="k">finally</span> <span class="p">{</span>
+    <span class="nb">cd </span><span class="nv">$originalPath</span>
+<span class="p">}</span></div></code></pre><p>Sometimes it's helpful to change the directory before running a script and to change the directory back afterwards. For example, this particular script randomly picks words from files <em>in the same folder as the Python script</em> to generate random names for online accounts, like &quot;BuzzingBalance&quot;, &quot;WorseningBoat&quot;, and &quot;EnoughCoffee&quot;.</p>
 <p><strong>radix.bat</strong></p>
 <pre><code>@echo off
 &quot;C:\Users\chris\Documents\programming\Radix-Converter\Debug\Radix-Converter.exe&quot;
