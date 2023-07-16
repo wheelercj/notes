@@ -59,30 +59,24 @@ explorer C:\Users\chris\Documents\programming\terminal_bindings
 </code></pre>
 <p>This opens the folder I keep these files in.</p>
 <p><strong>venv.ps1</strong></p>
-<pre><code>if ($args) {
-    Invoke-Expression &quot;venv$args/Scripts/Activate.ps1&quot;
-}
-else {
-    venv/Scripts/Activate.ps1
-}
-</code></pre>
-<p>With this, I can activate a Python virtual environment named &quot;venv&quot; in the current working directory by simply entering <code>venv</code>. Also, if I have any other virtual environments with something after &quot;venv&quot; in their name, such as &quot;venv39&quot;, I can activate them by entering their name with a space, e.g. <code>venv 39</code>.</p>
+<pre><code class="language-powershell"><div class="source"><span></span><span class="k">if</span> <span class="p">(</span><span class="nv">$args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">Invoke-Expression</span> <span class="s2">&quot;venv$args/Scripts/Activate.ps1&quot;</span>
+<span class="p">}</span>
+<span class="k">else</span> <span class="p">{</span>
+    <span class="n">venv</span><span class="p">/</span><span class="n">Scripts</span><span class="p">/</span><span class="n">Activate</span><span class="p">.</span><span class="n">ps1</span>
+<span class="p">}</span></div></code></pre><p>With this, I can activate a Python virtual environment named &quot;venv&quot; in the current working directory by simply entering <code>venv</code>. Also, if I have any other virtual environments with something after &quot;venv&quot; in their name, such as &quot;venv39&quot;, I can activate them by entering their name with a space, e.g. <code>venv 39</code>.</p>
 <p><strong>tias.ps1</strong></p>
-<pre><code>C:/Users/chris/Documents/programming/tias/venv/Scripts/Activate.ps1
-try {
-    py -m tias &quot;$args&quot;
-}
-finally {
-    deactivate
-}
-</code></pre>
-<p>Although Python itself also has <a href="https://stackoverflow.com/questions/48884796/how-to-set-up-entry-points-in-setup-cfg">tools for creating custom terminal commands</a>, I used the above script which activates a virtual environment, runs <a href="https://github.com/wheelercj/tias">a Python package</a> optionally with an argument, and then deactivates the virtual environment even if I press Ctrl+c to end the script.</p>
+<pre><code class="language-powershell"><div class="source"><span></span><span class="n">C</span><span class="p">:/</span><span class="n">Users</span><span class="p">/</span><span class="n">chris</span><span class="p">/</span><span class="n">Documents</span><span class="p">/</span><span class="n">programming</span><span class="p">/</span><span class="n">tias</span><span class="p">/</span><span class="n">venv</span><span class="p">/</span><span class="n">Scripts</span><span class="p">/</span><span class="n">Activate</span><span class="p">.</span><span class="n">ps1</span>
+<span class="k">try</span> <span class="p">{</span>
+    <span class="n">py</span> <span class="n">-m</span> <span class="n">tias</span> <span class="s2">&quot;$args&quot;</span>
+<span class="p">}</span>
+<span class="k">finally</span> <span class="p">{</span>
+    <span class="n">deactivate</span>
+<span class="p">}</span></div></code></pre><p>Although Python itself also has <a href="https://stackoverflow.com/questions/48884796/how-to-set-up-entry-points-in-setup-cfg">tools for creating custom terminal commands</a>, I used the above script which activates a virtual environment, runs <a href="https://github.com/wheelercj/tias">a Python package</a> optionally with an argument, and then deactivates the virtual environment even if I press Ctrl+c to end the script.</p>
 <p><strong>todo.ps1</strong></p>
-<pre><code>C:/Users/chris/Documents/programming/refactor-todo-list/venv/Scripts/Activate.ps1
-py &quot;C:/Users/chris/Documents/programming/refactor-todo-list/create_task.py&quot; &quot;$args&quot;
-deactivate
-</code></pre>
-<p>The <code>&quot;$args&quot;</code> allows <a href="https://github.com/wheelercj/refactor-todo-list/blob/main/create_task.py">the Python script</a> to receive any number of words as arguments when I use the <code>todo</code> command. For example, I could enter <code>todo buy oranges and apples</code> to add &quot;buy oranges and apples&quot; to my to do list.</p>
+<pre><code class="language-powershell"><div class="source"><span></span><span class="n">C</span><span class="p">:/</span><span class="n">Users</span><span class="p">/</span><span class="n">chris</span><span class="p">/</span><span class="n">Documents</span><span class="p">/</span><span class="n">programming</span><span class="p">/</span><span class="n">refactor-todo-list</span><span class="p">/</span><span class="n">venv</span><span class="p">/</span><span class="n">Scripts</span><span class="p">/</span><span class="n">Activate</span><span class="p">.</span><span class="n">ps1</span>
+<span class="n">py</span> <span class="s2">&quot;C:/Users/chris/Documents/programming/refactor-todo-list/create_task.py&quot;</span> <span class="s2">&quot;$args&quot;</span>
+<span class="n">deactivate</span></div></code></pre><p>The <code>&quot;$args&quot;</code> allows <a href="https://github.com/wheelercj/refactor-todo-list/blob/main/create_task.py">the Python script</a> to receive any number of words as arguments when I use the <code>todo</code> command. For example, I could enter <code>todo buy oranges and apples</code> to add &quot;buy oranges and apples&quot; to my to do list.</p>
 <p><strong>name.ps1</strong></p>
 <pre><code class="language-powershell"><div class="source"><span></span><span class="k">try</span> <span class="p">{</span>
     <span class="nv">$originalPath</span> <span class="p">=</span> <span class="nb">Get-Location</span>
