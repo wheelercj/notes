@@ -34,7 +34,8 @@
 <h2>Mac and Linux</h2>
 <p><a href="https://medium.com/devnetwork/how-to-create-your-own-custom-terminal-commands-c5008782a78e">This guide</a> seems well-written (no need to rewrite the wheel).</p>
 <h2>Windows</h2>
-<p>I recommend checking out <a href="https://aka.ms/terminal">Windows Terminal</a> if you're choosing a terminal app. Here's how to create custom commands:</p>
+<p>I recommend checking out <a href="https://aka.ms/terminal">Windows Terminal</a> if you're choosing a terminal app.</p>
+<p>There are multiple ways to create custom commands. Here's a way that involves creating a new file for each command:</p>
 <ol>
 <li>Create a folder that will hold the files that describe what your command(s) will do. You can name this folder anything and put it anywhere you want; I happened to name mine <code>C:/Users/chris/Documents/programming/terminal_bindings</code>.</li>
 <li>Add the path to the new folder to the PATH user environment variable. See <a href="20220429185353.html">[§] how to edit PATH in Windows</a>.</li>
@@ -61,36 +62,35 @@ explorer C:\Users\chris\Documents\programming\terminal_bindings
 <p><strong>venv.ps1</strong></p>
 <pre><code class="language-powershell"><div class="source"><span></span><span class="k">if</span> <span class="p">(</span><span class="nv">$args</span><span class="p">)</span> <span class="p">{</span>
     <span class="nb">Invoke-Expression</span> <span class="s2">&quot;venv$args/Scripts/Activate.ps1&quot;</span>
-<span class="p">}</span>
-<span class="k">else</span> <span class="p">{</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="n">venv</span><span class="p">/</span><span class="n">Scripts</span><span class="p">/</span><span class="n">Activate</span><span class="p">.</span><span class="n">ps1</span>
 <span class="p">}</span></div></code></pre><p>With this, I can activate a Python virtual environment named &quot;venv&quot; in the current working directory by simply entering <code>venv</code>. Also, if I have any other virtual environments with something after &quot;venv&quot; in their name, such as &quot;venv39&quot;, I can activate them by entering their name with a space, e.g. <code>venv 39</code>.</p>
-<p><strong>tias.ps1</strong></p>
-<pre><code class="language-powershell"><div class="source"><span></span><span class="n">C</span><span class="p">:/</span><span class="n">Users</span><span class="p">/</span><span class="n">chris</span><span class="p">/</span><span class="n">Documents</span><span class="p">/</span><span class="n">programming</span><span class="p">/</span><span class="n">tias</span><span class="p">/</span><span class="n">venv</span><span class="p">/</span><span class="n">Scripts</span><span class="p">/</span><span class="n">Activate</span><span class="p">.</span><span class="n">ps1</span>
-<span class="k">try</span> <span class="p">{</span>
-    <span class="n">py</span> <span class="n">-m</span> <span class="n">tias</span> <span class="s2">&quot;$args&quot;</span>
-<span class="p">}</span>
-<span class="k">finally</span> <span class="p">{</span>
-    <span class="n">deactivate</span>
-<span class="p">}</span></div></code></pre><p>Although Python itself also has <a href="https://stackoverflow.com/questions/48884796/how-to-set-up-entry-points-in-setup-cfg">tools for creating custom terminal commands</a>, I used the above script which activates a virtual environment, runs <a href="https://github.com/wheelercj/tias">a Python package</a> optionally with an argument, and then deactivates the virtual environment even if I press Ctrl+c to end the script.</p>
 <p><strong>todo.ps1</strong></p>
-<pre><code class="language-powershell"><div class="source"><span></span><span class="n">C</span><span class="p">:/</span><span class="n">Users</span><span class="p">/</span><span class="n">chris</span><span class="p">/</span><span class="n">Documents</span><span class="p">/</span><span class="n">programming</span><span class="p">/</span><span class="n">refactor-todo-list</span><span class="p">/</span><span class="n">venv</span><span class="p">/</span><span class="n">Scripts</span><span class="p">/</span><span class="n">Activate</span><span class="p">.</span><span class="n">ps1</span>
-<span class="n">py</span> <span class="s2">&quot;C:/Users/chris/Documents/programming/refactor-todo-list/create_task.py&quot;</span> <span class="s2">&quot;$args&quot;</span>
-<span class="n">deactivate</span></div></code></pre><p>The <code>&quot;$args&quot;</code> allows <a href="https://github.com/wheelercj/refactor-todo-list/blob/main/create_task.py">the Python script</a> to receive any number of words as arguments when I use the <code>todo</code> command. For example, I could enter <code>todo buy oranges and apples</code> to add &quot;buy oranges and apples&quot; to my to do list.</p>
-<p><strong>name.ps1</strong></p>
-<pre><code class="language-powershell"><div class="source"><span></span><span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$originalPath</span> <span class="p">=</span> <span class="nb">Get-Location</span>
-    <span class="nb">cd </span><span class="n">C</span><span class="p">:/</span><span class="n">Users</span><span class="p">/</span><span class="n">chris</span><span class="p">/</span><span class="n">Documents</span><span class="p">/</span><span class="n">programming</span><span class="p">/</span><span class="n">namer</span>
-    <span class="n">py</span> <span class="n">main</span><span class="p">.</span><span class="n">py</span> <span class="nv">$args</span>
-<span class="p">}</span>
-<span class="k">finally</span> <span class="p">{</span>
+<pre><code class="language-powershell"><div class="source"><span></span><span class="nv">$originalPath</span> <span class="p">=</span> <span class="nb">pwd</span>
+<span class="nb">cd </span><span class="n">C</span><span class="p">:/</span><span class="n">Users</span><span class="p">/</span><span class="n">chris</span><span class="p">/</span><span class="n">Documents</span><span class="p">/</span><span class="n">programming</span><span class="p">/</span><span class="n">refactor-todo-list</span>
+<span class="k">try</span> <span class="p">{</span>
+    <span class="n">venv</span><span class="p">/</span><span class="n">Scripts</span><span class="p">/</span><span class="n">Activate</span><span class="p">.</span><span class="n">ps1</span>
+    <span class="n">py</span> <span class="n">create_task</span><span class="p">.</span><span class="n">py</span> <span class="s2">&quot;$args&quot;</span>
+<span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+    <span class="n">deactivate</span>
     <span class="nb">cd </span><span class="nv">$originalPath</span>
-<span class="p">}</span></div></code></pre><p>Sometimes it's helpful to change the directory before running a script and to change the directory back afterwards. For example, this particular script randomly picks words from files <em>in the same folder as the Python script</em> to generate random names for online accounts, like &quot;BuzzingBalance&quot;, &quot;WorseningBoat&quot;, and &quot;EnoughCoffee&quot;.</p>
+<span class="p">}</span></div></code></pre><p>This script creates a <code>todo</code> command. For example, I could enter <code>todo buy oranges and apples</code> to add &quot;buy oranges and apples&quot; to my to do list.</p>
+<p>Here's what the script does in detailed steps:</p>
+<ol>
+<li>save the current working directory</li>
+<li>change the directory to a Python project named <code>refactor-todo-list</code></li>
+<li>activate the project's virtual environment named <code>venv</code></li>
+<li>run a Python script named <code>create_task.py</code> with zero or more arguments</li>
+<li>deactivate the virtual environment</li>
+<li>change the directory back to what it originally was</li>
+</ol>
+<p>The last two steps run even if the Python script crashes or I press ctrl+c to interrupt it.</p>
+<p>Although Python itself also has <a href="https://stackoverflow.com/questions/48884796/how-to-set-up-entry-points-in-setup-cfg">tools for creating custom terminal commands</a>, sometimes creating a powershell file like this is still helpful or easier.</p>
 <p><strong>radix.bat</strong></p>
 <pre><code>@echo off
 &quot;C:\Users\chris\Documents\programming\Radix-Converter\Debug\Radix-Converter.exe&quot;
 </code></pre>
-<p>This is the command to run the exe for <a href="https://github.com/wheelercj/Radix-Converter">a C++ program I wrote</a>.</p>
+<p>This is the command to run the executable for a C++ program I wrote.</p>
 <p><strong>zoom.bat</strong></p>
 <pre><code>@echo off
 start &quot;first zoom&quot; C:\Users\chris\AppData\Roaming\Zoom\bin\Zoom.exe
@@ -102,9 +102,24 @@ if %1%==3 exit 0
 start &quot;fourth zoom&quot; C:\Users\chris\AppData\Roaming\Zoom\bin\Zoom3.exe
 </code></pre>
 <p>I made copies of my zoom.exe file so that I can have multiple instances of zoom open at the same time. This script lets me easily open the number of instances I want. For example, I can enter <code>zoom 2</code> to open 2 instances of zoom.</p>
-<h2>see also</h2>
+<h3>another way to create custom commands</h3>
+<p>In Windows, there's something called a powershell profile that lets you customize many parts of powershell, including creating custom commands. To open your powershell profile, open powershell and enter <code>notepad $profile</code>. This should open a file. Within this file, you can add functions to create new powershell commands. For example, below is how to add to powershell a command called <code>hist</code> that lists/searches your entire command history <em>across sessions</em> (unlike the built-in <code>h</code> and <code>r</code> commands). This was written by <a href="https://superuser.com/questions/1195895/view-full-history-for-powershell-not-just-current-session">Adam Wemlinger</a>.</p>
+<pre><code class="language-powershell"><div class="source"><span></span><span class="k">function</span> <span class="n">hist</span> <span class="p">{</span> 
+  <span class="nv">$find</span> <span class="p">=</span> <span class="nv">$args</span><span class="p">;</span> 
+  <span class="nb">Write-Host</span> <span class="s2">&quot;Finding in full history using {</span><span class="se">`$</span><span class="s2">_ -like </span><span class="se">`&quot;</span><span class="s2">*$find*</span><span class="se">`&quot;</span><span class="s2">}&quot;</span><span class="p">;</span> 
+  <span class="nb">Get-Content</span> <span class="p">(</span><span class="nb">Get-PSReadlineOption</span><span class="p">).</span><span class="n">HistorySavePath</span> <span class="p">|</span> <span class="p">?</span> <span class="p">{</span><span class="nv">$_</span> <span class="o">-like</span> <span class="s2">&quot;*$find*&quot;</span><span class="p">}</span> <span class="p">|</span> <span class="nb">Get-Unique</span> <span class="p">|</span> <span class="n">more</span> 
+<span class="p">}</span></div></code></pre><p>After adding this text, save the file, restart the terminal, and try your new <code>hist</code> command.</p>
+<p>More about powershell profiles:</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles?view=powershell-7.3">Microsoft's docs</a></li>
+<li><a href="20230206213946.html">[§] how to customize terminal prompts in Windows</a></li>
+</ul>
+<h2>how to receive command line arguments</h2>
+<p>Every widely-used general-purpose programming language has a way to receive command line inputs. Here are guides for a few:</p>
 <ul>
 <li><a href="20230615210050.html">[§] C++ command line arguments</a></li>
+<li><a href="https://docs.python.org/3/library/argparse.html">Python's <code>argparse</code> library</a></li>
+<li><a href="https://pkg.go.dev/flag">Go's <code>flag</code> library</a></li>
 </ul>
 </main>
 
