@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+
+    <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <title>Chris' notes</title>
+        <link rel='stylesheet' type='text/css' href='../style.css' media='screen' />
+        <!-- bootstrap -->
+        <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'
+            integrity='sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z' crossorigin='anonymous'>
+        <!-- bootstrap -->
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href='../about.html'>About</a></li>
+                    <li><a href='../index.html'>Home</a></li>
+                </ul>
+                <a href='../index.html' class='title'>Chris' notes</a>
+            </nav>
+        </header>
+
+        <main>
+<h1>bcrypt's password length limit</h1>
+<p>Using <a href="https://www.npmjs.com/package/bcrypt/v/5.1.0">npm's bcrypt v5.1.0</a>, the maximum possible password length without truncation nor preliminary hashing is 72 ASCII <strong>characters</strong> (not bytes!) as proven with the below script, which:</p>
+<ol>
+<li>randomly generates a password of length 73</li>
+<li>creates truncated password copies of lengths 72 and 71</li>
+<li>hashes all 3 passwords with the same salt</li>
+<li>compares the hashes</li>
+</ol>
+<p>The result is that the hashes of the 73- and 72-character passwords always match, and those of the 72- and 71-character passwords never match.</p>
+<pre><code class="language-js"><div class="source"><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">bcrypt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;bcrypt&#39;</span><span class="p">);</span><span class="w"></span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">testBcrypt</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">printableAsciiChars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Array</span><span class="p">.</span><span class="kr">from</span><span class="p">(</span><span class="nb">Array</span><span class="p">(</span><span class="mf">95</span><span class="p">).</span><span class="nx">keys</span><span class="p">()).</span><span class="nx">map</span><span class="p">((</span><span class="nx">i</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">String</span><span class="p">.</span><span class="nx">fromCharCode</span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">32</span><span class="p">)).</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">salt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">bcrypt</span><span class="p">.</span><span class="nx">genSalt</span><span class="p">(</span><span class="mf">10</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">countMatching73And72</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">countMatching72And71</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1000</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">N</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// randomly choose a password of length 73</span><span class="w"></span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">password73</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Array</span><span class="p">.</span><span class="kr">from</span><span class="p">(</span><span class="nb">Array</span><span class="p">(</span><span class="mf">73</span><span class="p">).</span><span class="nx">keys</span><span class="p">()).</span><span class="nx">map</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">printableAsciiChars</span><span class="p">[</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">printableAsciiChars</span><span class="p">.</span><span class="nx">length</span><span class="p">)]).</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">password72</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">password73</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">password71</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">password73</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">hash73</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">bcrypt</span><span class="p">.</span><span class="nx">hash</span><span class="p">(</span><span class="nx">password73</span><span class="p">,</span><span class="w"> </span><span class="nx">salt</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">hash72</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">bcrypt</span><span class="p">.</span><span class="nx">hash</span><span class="p">(</span><span class="nx">password72</span><span class="p">,</span><span class="w"> </span><span class="nx">salt</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">hash71</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">bcrypt</span><span class="p">.</span><span class="nx">hash</span><span class="p">(</span><span class="nx">password71</span><span class="p">,</span><span class="w"> </span><span class="nx">salt</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">hash73</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">hash72</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="nx">countMatching73And72</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">hash72</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">hash71</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="nx">countMatching72And71</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;\r              \riter &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">N</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;\r              \r&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">countMatching73And72</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">N</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;matches between 73 and 72&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">countMatching72And71</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">N</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;matches between 72 and 71&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="nx">testBcrypt</span><span class="p">();</span><span class="w"></span></div></code></pre><p>There are different implementations of bcrypt that have different capabilities, so this may not apply to any other packages or even other versions of the same package. Further reading: <a href="https://security.stackexchange.com/questions/39849/does-bcrypt-have-a-maximum-password-length">does bcrypt have a maximum password length?</a></p>
+<p>Side note: if you're going to make a random password generator for real password use, don't do it this way because it's not cryptographically secure.</p>
+</main>
+
+<footer>
+    
+</footer>
+
+<!-- bootstrap -->
+<script src='https://code.jquery.com/jquery-3.5.1.slim.min.js'
+    integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj'
+    crossorigin='anonymous'></script>
+<script src='https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js'
+    integrity='sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN'
+    crossorigin='anonymous'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'
+    integrity='sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV'
+    crossorigin='anonymous'></script>
+<!-- bootstrap -->
+</body>
+
+</html>
