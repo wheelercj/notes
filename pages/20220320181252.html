@@ -31,11 +31,19 @@
 <p>to something like this:</p>
 <p><code>todo</code></p>
 <p>This will work no matter which directory the terminal is in and can temporarily activate a virtual environment if needed. How to create custom commands depends on your operating system.</p>
+<p>Some programming languages have specialized tools for creating custom terminal commands (links to a few are listed below), but sometimes creating the command in one of the other ways on this page is easier overall.</p>
+<ul>
+<li><a href="https://go.dev/doc/tutorial/compile-install">Go</a> – compile and install the application</li>
+<li><a href="https://stackoverflow.com/questions/48884796/how-to-set-up-entry-points-in-setup-cfg">Python</a> – how to set up entry_points in setup.cfg</li>
+</ul>
 <h2>Mac and Linux</h2>
 <p><a href="https://medium.com/devnetwork/how-to-create-your-own-custom-terminal-commands-c5008782a78e">This guide</a> seems well-written (no need to rewrite the wheel).</p>
 <h2>Windows</h2>
 <p>I recommend checking out <a href="https://aka.ms/terminal">Windows Terminal</a> if you're choosing a terminal app.</p>
-<p>There are multiple ways to create custom commands. Here's a way that involves creating a new file for each command:</p>
+<p>There are multiple ways to create custom commands.</p>
+<h3>temporary commands</h3>
+<p>If you already have an executable file, a super quick way to create a command that only lasts until you close the terminal is to run <code>$env:Path += ';C:\path\to\my\executable\file.exe'</code> in PowerShell.</p>
+<h3>permanent commands</h3>
 <ol>
 <li>Create a folder that will hold the files that describe what your command(s) will do. You can name this folder anything and put it anywhere you want; I happened to name mine <code>C:/Users/chris/Documents/programming/terminal_bindings</code>.</li>
 <li>Add the path to the new folder to the PATH user environment variable. See <a href="20220429185353.html">[§] how to edit PATH in Windows</a>.</li>
@@ -88,7 +96,6 @@ explorer C:\Users\chris\Documents\programming\terminal_bindings
 <li>change the directory back to what it originally was</li>
 </ol>
 <p>The last two steps run even if the Python script crashes or I press ctrl+c to interrupt it.</p>
-<p>Although Python itself also has <a href="https://stackoverflow.com/questions/48884796/how-to-set-up-entry-points-in-setup-cfg">tools for creating custom terminal commands</a>, sometimes creating a powershell file like this is still helpful or easier.</p>
 <p><strong>radix.bat</strong></p>
 <pre><code>@echo off
 &quot;C:\Users\chris\Documents\programming\Radix-Converter\Debug\Radix-Converter.exe&quot;

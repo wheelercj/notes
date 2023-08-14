@@ -26,7 +26,15 @@
 
         <main>
 <h1>how to edit PATH in Windows</h1>
-<p>Environment variables such as PATH help organize computers to make important apps and files easier to access.</p>
+<p>Environment variables such as PATH help organize computers to make important apps and files easier to access. You can edit PATH using a GUI or with PowerShell.</p>
+<h2>temporary change with PowerShell</h2>
+<ul>
+<li><code>$env:Path</code> gets the current contents of the PATH variable.</li>
+<li><code>$env:Path += ';C:\my\file\path'</code> appends a file or folder to PATH.</li>
+<li><code>$env:Path = 'C:\my\file\path;' + $env:Path</code> prepends a file or folder to PATH.</li>
+</ul>
+<p>Changes to PATH made this way will only last until you close the terminal.</p>
+<h2>permanent change with a GUI</h2>
 <ol>
 <li>Press the Windows key.</li>
 <li>Type <code>path</code> and select &quot;edit the system environment variables&quot;.</li>
@@ -41,7 +49,7 @@
 <li>Click <code>Browse</code>.</li>
 <li>Select the file or folder you want to add to PATH.</li>
 <li>Click <code>OK</code> on each of the new windows.</li>
-<li>There's a chance you will need to restart for the change to take effect.</li>
+<li>Restart any running terminal for the change to take effect.</li>
 </ol>
 </main>
 
