@@ -30,8 +30,8 @@
 <p><code>py -3.10 &quot;C:\Users\chris\Documents\programming\refactor-todo-list\create_task.py&quot;</code></p>
 <p>to something like this:</p>
 <p><code>todo</code></p>
-<p>This will work no matter which directory the terminal is in and can temporarily activate a virtual environment if needed. How to create custom commands depends on your operating system.</p>
-<p>Some programming languages have specialized tools for creating custom terminal commands (links to a few are listed below), but sometimes creating the command in one of the other ways on this page is easier overall.</p>
+<p>This will work no matter which directory the terminal is in and can temporarily change directories and/or activate a virtual environment if needed.</p>
+<p>Some programming languages have their own tools for creating custom terminal commands (links to a few are listed below), but sometimes creating the command in one of the other ways on this page is easier overall.</p>
 <ul>
 <li><a href="https://go.dev/doc/tutorial/compile-install">Go</a> – compile and install the application</li>
 <li><a href="https://stackoverflow.com/questions/48884796/how-to-set-up-entry-points-in-setup-cfg">Python</a> – how to set up entry_points in setup.cfg</li>
@@ -40,89 +40,92 @@
 <p><a href="https://medium.com/devnetwork/how-to-create-your-own-custom-terminal-commands-c5008782a78e">This guide</a> seems well-written (no need to rewrite the wheel).</p>
 <h2>Windows</h2>
 <p>I recommend checking out <a href="https://aka.ms/terminal">Windows Terminal</a> if you're choosing a terminal app.</p>
-<p>There are multiple ways to create custom commands.</p>
 <h3>temporary commands</h3>
 <p>If you already have an executable file, a super quick way to create a command that only lasts until you close the terminal is to run <code>$env:Path += ';C:\path\to\my\executable\file.exe'</code> in PowerShell.</p>
 <h3>permanent commands</h3>
 <ol>
-<li>Create a folder that will hold the files that describe what your command(s) will do. You can name this folder anything and put it anywhere you want; I happened to name mine <code>C:/Users/chris/Documents/programming/terminal_bindings</code>.</li>
-<li>Add the path to the new folder to the PATH user environment variable. See <a href="20220429185353.html">[§] how to edit PATH in Windows</a>.</li>
+<li>In PowerShell, enter <code>notepad $profile</code>. This should open a PowerShell file (the file extension should be <code>.ps1</code>.</li>
+<li>In this file, you can create custom terminal commands by defining PowerShell functions. For example,</li>
 </ol>
-<p><strong>The steps above never need to be repeated when you create more terminal commands in the future.</strong></p>
+<pre><code class="language-powershell"><div class="source"><span></span><span class="k">function</span> <span class="n">hi</span> <span class="p">{</span>
+    <span class="nb">Write-Host</span> <span class="s2">&quot;hello&quot;</span>
+<span class="p">}</span></div></code></pre><p>This creates a <code>hi</code> command that responds with <code>hello</code> when used.</p>
 <ol start="3">
-<li>In the new folder, put or create an executable file (e.g. a file that ends with <code>.exe</code>, or with <code>.py</code> if you want to use <a href="https://wheelercj.github.io/notes/pages/20220109123727.html">Python</a>, or <code>.bat</code> or <code>.cmd</code> if you want to use <a href="https://www.tutorialspoint.com/batch_script/batch_script_quick_guide.htm">Batch scripts</a>, or <code>.ps1</code> if you would prefer to use <a href="https://devblogs.microsoft.com/scripting/table-of-basic-powershell-commands/">PowerShell commands</a>). The file name must start with what you want the terminal command to be. For example, if you want to create a <code>project</code> command that uses Batch to open a bunch of applications and/or websites at once for a project you're working on, create <code>project.bat</code>.</li>
-<li>Put terminal command(s) into this new file. Continuing with the <code>project.bat</code> example, the contents of the file could be something like this Batch file I use when I start remote tutoring sessions:</li>
+<li>Save the file.</li>
+<li>Restart your terminal.</li>
+<li>Try your new command.</li>
 </ol>
-<pre><code>@echo off
-start &quot;&quot; &quot;https://web.penjiapp.com/communities/xcvnssap3/teach/drop-in-waitlist/vosiueu8c/hours/ovxueaqodm&quot;
-start &quot;&quot; &quot;C:/Users/chris/AppData/Local/Microsoft/Teams/current/teams.exe&quot;
-start &quot;first zoom&quot; C:\Users\chris\AppData\Roaming\Zoom\bin\zoom.exe
-start &quot;second zoom&quot; C:\Users\chris\AppData\Roaming\Zoom\bin\Zoom1.exe
-&quot;C:/Users/chris/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/zq/zq.lnk&quot;
-</code></pre>
-<p>(This example script opens a website and a few applications.) Now you can run your script by simply opening your terminal and typing the command you created without worrying what the current working directory is!</p>
-<h3>some other scripts that I use</h3>
-<p><strong>binds.bat</strong></p>
-<pre><code>@echo off
-explorer C:\Users\chris\Documents\programming\terminal_bindings
-</code></pre>
-<p>This opens the folder I keep these files in.</p>
-<p><strong>whois.exe</strong></p>
-<p>Any existing .exe file can be dropped into the folder without changes (or with an optional name change), and it should work.</p>
-<p>The <code>whois</code> command is sometimes very useful for getting info about a website. It's normally not available on Windows, unless you download the official .exe file for it from Microsoft <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/whois">here</a>.</p>
-<p><strong>venv.ps1</strong></p>
-<pre><code class="language-powershell"><div class="source"><span></span><span class="k">if</span> <span class="p">(</span><span class="nv">$args</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nb">Invoke-Expression</span> <span class="s2">&quot;venv$args/Scripts/Activate.ps1&quot;</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="n">venv</span><span class="p">/</span><span class="n">Scripts</span><span class="p">/</span><span class="n">Activate</span><span class="p">.</span><span class="n">ps1</span>
-<span class="p">}</span></div></code></pre><p>With this, I can activate a Python virtual environment named &quot;venv&quot; in the current working directory by simply entering <code>venv</code>. Also, if I have any other virtual environments with something after &quot;venv&quot; in their name, such as &quot;venv39&quot;, I can activate them by entering their name with a space, e.g. <code>venv 39</code>.</p>
-<p><strong>todo.ps1</strong></p>
-<pre><code class="language-powershell"><div class="source"><span></span><span class="nv">$originalPath</span> <span class="p">=</span> <span class="nb">pwd</span>
-<span class="nb">cd </span><span class="n">C</span><span class="p">:/</span><span class="n">Users</span><span class="p">/</span><span class="n">chris</span><span class="p">/</span><span class="n">Documents</span><span class="p">/</span><span class="n">programming</span><span class="p">/</span><span class="n">refactor-todo-list</span>
-<span class="k">try</span> <span class="p">{</span>
-    <span class="n">venv</span><span class="p">/</span><span class="n">Scripts</span><span class="p">/</span><span class="n">Activate</span><span class="p">.</span><span class="n">ps1</span>
-    <span class="n">py</span> <span class="n">create_task</span><span class="p">.</span><span class="n">py</span> <span class="s2">&quot;$args&quot;</span>
-<span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
-    <span class="n">deactivate</span>
-    <span class="nb">cd </span><span class="nv">$originalPath</span>
-<span class="p">}</span></div></code></pre><p>This script creates a <code>todo</code> command. For example, I could enter <code>todo buy oranges and apples</code> to add &quot;buy oranges and apples&quot; to my to do list.</p>
-<p>Here's what the script does in detailed steps:</p>
-<ol>
-<li>save the current working directory</li>
-<li>change the directory to a Python project named <code>refactor-todo-list</code></li>
-<li>activate the project's virtual environment named <code>venv</code></li>
-<li>run a Python script named <code>create_task.py</code> with zero or more arguments</li>
-<li>deactivate the virtual environment</li>
-<li>change the directory back to what it originally was</li>
-</ol>
-<p>The last two steps run even if the Python script crashes or I press ctrl+c to interrupt it.</p>
-<p><strong>radix.bat</strong></p>
-<pre><code>@echo off
-&quot;C:\Users\chris\Documents\programming\Radix-Converter\Debug\Radix-Converter.exe&quot;
-</code></pre>
-<p>This is the command to run the executable for a C++ program I wrote.</p>
-<p><strong>zoom.bat</strong></p>
-<pre><code>@echo off
-start &quot;first zoom&quot; C:\Users\chris\AppData\Roaming\Zoom\bin\Zoom.exe
-if %1%==1 exit 0
-start &quot;second zoom&quot; C:\Users\chris\AppData\Roaming\Zoom\bin\Zoom1.exe
-if %1%==2 exit 0
-start &quot;third zoom&quot; C:\Users\chris\AppData\Roaming\Zoom\bin\Zoom2.exe
-if %1%==3 exit 0
-start &quot;fourth zoom&quot; C:\Users\chris\AppData\Roaming\Zoom\bin\Zoom3.exe
-</code></pre>
-<p>I made copies of my zoom.exe file so that I can have multiple instances of zoom open at the same time. This script lets me easily open the number of instances I want. For example, I can enter <code>zoom 2</code> to open 2 instances of zoom.</p>
-<h3>another way to create custom commands</h3>
-<p>In Windows, there's something called a powershell profile that lets you customize many parts of powershell, including creating custom commands. To open your powershell profile, open powershell and enter <code>notepad $profile</code>. This should open a file. Within this file, you can add functions to create new powershell commands. For example, below is how to add to powershell a command called <code>hist</code> that lists/searches your entire command history <em>across sessions</em> (unlike the built-in <code>h</code> and <code>r</code> commands). This was written by <a href="https://superuser.com/questions/1195895/view-full-history-for-powershell-not-just-current-session">Adam Wemlinger</a>.</p>
-<pre><code class="language-powershell"><div class="source"><span></span><span class="k">function</span> <span class="n">hist</span> <span class="p">{</span> 
-  <span class="nv">$find</span> <span class="p">=</span> <span class="nv">$args</span><span class="p">;</span> 
-  <span class="nb">Write-Host</span> <span class="s2">&quot;Finding in full history using {</span><span class="se">`$</span><span class="s2">_ -like </span><span class="se">`&quot;</span><span class="s2">*$find*</span><span class="se">`&quot;</span><span class="s2">}&quot;</span><span class="p">;</span> 
-  <span class="nb">Get-Content</span> <span class="p">(</span><span class="nb">Get-PSReadlineOption</span><span class="p">).</span><span class="n">HistorySavePath</span> <span class="p">|</span> <span class="p">?</span> <span class="p">{</span><span class="nv">$_</span> <span class="o">-like</span> <span class="s2">&quot;*$find*&quot;</span><span class="p">}</span> <span class="p">|</span> <span class="nb">Get-Unique</span> <span class="p">|</span> <span class="n">more</span> 
-<span class="p">}</span></div></code></pre><p>After adding this text, save the file, restart the terminal, and try your new <code>hist</code> command.</p>
-<p>More about powershell profiles:</p>
+<p>Here are more examples:</p>
+<pre><code class="language-powershell"><div class="source"><span></span><span class="c"># This function runs a program.</span>
+<span class="k">function</span> <span class="n">matrix</span> <span class="p">{</span>
+    <span class="p">&amp;</span> <span class="s2">&quot;C:\Users\chris\Documents\programming\the_matrix\x64\Debug\the_matrix.exe&quot;</span>
+<span class="p">}</span>
+
+<span class="c"># You can run any type of executable file this way, not just .exe files.</span>
+<span class="k">function</span> <span class="n">psql</span> <span class="p">{</span>
+    <span class="p">&amp;</span> <span class="s2">&quot;C:/ProgramData/Microsoft/Windows/Start Menu/Programs/PostgreSQL 15/SQL Shell (psql).lnk&quot;</span>
+<span class="p">}</span>
+
+<span class="c"># This runs a Python program. The $args at the end sends any inputs for the command from</span>
+<span class="c"># the terminal to the program. If all the inputs should be in one string, you can put</span>
+<span class="c"># double quotes around it: &quot;$args&quot;.</span>
+<span class="k">function</span> <span class="n">rand</span> <span class="p">{</span>
+    <span class="n">py</span> <span class="n">C</span><span class="p">:/</span><span class="n">Users</span><span class="p">/</span><span class="n">chris</span><span class="p">/</span><span class="n">Documents</span><span class="p">/</span><span class="n">programming</span><span class="p">/</span><span class="n">rand</span><span class="p">/</span><span class="n">main</span><span class="p">.</span><span class="n">py</span> <span class="nv">$args</span>
+<span class="p">}</span>
+
+<span class="c"># Some programs need to temporarily change the directory and/or activate a virtual</span>
+<span class="c"># environment while running.</span>
+<span class="k">function</span> <span class="n">todo</span> <span class="p">{</span>
+    <span class="nv">$originalPath</span> <span class="p">=</span> <span class="nb">pwd</span>
+    <span class="nb">cd </span><span class="n">C</span><span class="p">:/</span><span class="n">Users</span><span class="p">/</span><span class="n">chris</span><span class="p">/</span><span class="n">Documents</span><span class="p">/</span><span class="n">programming</span><span class="p">/</span><span class="n">refactor-todo-list</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="n">venv</span><span class="p">/</span><span class="n">Scripts</span><span class="p">/</span><span class="n">Activate</span><span class="p">.</span><span class="n">ps1</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">py</span> <span class="n">create_task</span><span class="p">.</span><span class="n">py</span> <span class="s2">&quot;$args&quot;</span>
+        <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+            <span class="n">deactivate</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+        <span class="nb">cd </span><span class="nv">$originalPath</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c"># Make a folder easier to open.</span>
+<span class="k">function</span> <span class="n">binds</span> <span class="p">{</span>
+    <span class="n">explorer</span> <span class="s2">&quot;C:\Users\chris\Documents\programming\binds&quot;</span>
+<span class="p">}</span>
+
+<span class="c"># Here&#39;s how you can customize what your terminal prompts look like.</span>
+<span class="k">function</span> <span class="n">prompt</span> <span class="p">{</span>
+    <span class="c"># https://hodgkins.io/ultimate-powershell-prompt-and-git-setup</span>
+    <span class="nv">$realLASTEXITCODE</span> <span class="p">=</span> <span class="nv">$LASTEXITCODE</span>
+    <span class="nb">Write-Host</span> <span class="p">$($(</span><span class="nb">Get-Location</span><span class="p">)</span> <span class="o">-replace</span> <span class="s2">&quot;\\&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span> <span class="n">-ForegroundColor</span> <span class="n">Blue</span>
+    <span class="nv">$global:LASTEXITCODE</span> <span class="p">=</span> <span class="nv">$realLASTEXITCODE</span>
+    <span class="k">return</span> <span class="s2">&quot;&gt; &quot;</span>
+<span class="p">}</span>
+
+<span class="c"># This command shows or searches your command history across sessions (unlike the built-in</span>
+<span class="c"># `h` and `r` commands). This was written by Adam Wemlinger.</span>
+<span class="k">function</span> <span class="n">hist</span> <span class="p">{</span>
+    <span class="c"># https://superuser.com/questions/1195895/view-full-history-for-powershell-not-just-current-session</span>
+    <span class="nv">$find</span> <span class="p">=</span> <span class="nv">$args</span><span class="p">;</span> 
+    <span class="nb">Write-Host</span> <span class="s2">&quot;Finding in full history using {</span><span class="se">`$</span><span class="s2">_ -like </span><span class="se">`&quot;</span><span class="s2">*$find*</span><span class="se">`&quot;</span><span class="s2">}&quot;</span><span class="p">;</span> 
+    <span class="nb">Get-Content</span> <span class="p">(</span><span class="nb">Get-PSReadlineOption</span><span class="p">).</span><span class="n">HistorySavePath</span> <span class="p">|</span> <span class="p">?</span> <span class="p">{</span><span class="nv">$_</span> <span class="o">-like</span> <span class="s2">&quot;*$find*&quot;</span><span class="p">}</span> <span class="p">|</span> <span class="nb">Get-Unique</span> <span class="p">|</span> <span class="n">more</span> 
+<span class="p">}</span>
+
+<span class="c"># Activate a Python virtual environment named &quot;venv&quot; by simply entering &quot;venv&quot;. For</span>
+<span class="c"># environments with something after venv like &quot;venv311&quot;, enter &quot;venv 311&quot;.</span>
+<span class="k">function</span> <span class="n">venv</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">Invoke-Expression</span> <span class="s2">&quot;venv$args/Scripts/Activate.ps1&quot;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">venv</span><span class="p">/</span><span class="n">Scripts</span><span class="p">/</span><span class="n">Activate</span><span class="p">.</span><span class="n">ps1</span>
+    <span class="p">}</span>
+<span class="p">}</span></div></code></pre><p>If you don't want to add all your commands to one file, you can create a folder, add it to PATH (see <a href="20220429185353.html">[§] how to edit PATH in Windows</a>), and add executable files to that folder. The files can truly be any type of executable file, such as <code>.exe</code>, or <code>.py</code> if you're using Python, or <code>.bat</code> or <code>.cmd</code> if you want to use <a href="https://www.tutorialspoint.com/batch_script/batch_script_quick_guide.htm">Batch scripts</a>, or <code>.ps1</code> if you would prefer to use <a href="https://devblogs.microsoft.com/scripting/table-of-basic-powershell-commands/">PowerShell commands</a>. After adding these file(s) to the folder, restart your terminal and enter the file's name without the extension to run the command.</p>
+<h2>more about PowerShell profiles</h2>
 <ul>
-<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles?view=powershell-7.3">Microsoft's docs</a></li>
 <li><a href="20230206213946.html">[§] how to customize terminal prompts in Windows</a></li>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles?view=powershell-7.3">Microsoft's docs</a></li>
 </ul>
 <h2>how to receive command line arguments</h2>
 <p>Every widely-used general-purpose programming language has a way to receive command line inputs. Here are guides for a few:</p>
