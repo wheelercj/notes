@@ -122,17 +122,20 @@
         <span class="n">venv</span><span class="p">/</span><span class="n">Scripts</span><span class="p">/</span><span class="n">Activate</span><span class="p">.</span><span class="n">ps1</span>
     <span class="p">}</span>
 <span class="p">}</span></div></code></pre><p>If you don't want to add all your commands to one file, you can create a folder, add it to PATH (see <a href="20220429185353.html">[§] how to edit PATH in Windows</a>), and add executable files to that folder. The files can truly be any type of executable file, such as <code>.exe</code>, or <code>.py</code> if you're using Python, or <code>.bat</code> or <code>.cmd</code> if you want to use <a href="https://www.tutorialspoint.com/batch_script/batch_script_quick_guide.htm">Batch scripts</a>, or <code>.ps1</code> if you would prefer to use <a href="https://devblogs.microsoft.com/scripting/table-of-basic-powershell-commands/">PowerShell commands</a>. After adding these file(s) to the folder, restart your terminal and enter the file's name without the extension to run the command.</p>
-<h2>more about PowerShell profiles</h2>
+<h2>more about PowerShell</h2>
 <ul>
 <li><a href="20230206213946.html">[§] how to customize terminal prompts in Windows</a></li>
 <li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles?view=powershell-7.3">Microsoft's docs</a></li>
+<li><a href="https://stackoverflow.com/questions/803521/powershell-pitfalls/69644807#69644807">PowerShell Gotchas</a></li>
+<li>the <code>alias</code> command lists all aliases</li>
+<li>although many PowerShell guides show commands with uppercase letters, like <code>Get-Location</code>, PowerShell is not case-sensitive, so you can use <code>get-location</code> (or its alias <code>pwd</code>)</li>
 </ul>
 <h2>how to receive command line arguments</h2>
 <p>Every widely-used general-purpose programming language has a way to receive command line inputs. Here are guides for a few:</p>
 <ul>
 <li><a href="20230615210050.html">[§] C++ command line arguments</a></li>
 <li><a href="https://docs.python.org/3/library/argparse.html">Python's <code>argparse</code> library</a></li>
-<li><a href="https://pkg.go.dev/flag">Go's <code>flag</code> library</a></li>
+<li><a href="https://pkg.go.dev/flag">Go's <code>flag</code> library</a> and the <a href="https://github.com/spf13/cobra">spf13/cobra</a> framework that builds on top of it</li>
 </ul>
 </main>
 
