@@ -26,24 +26,31 @@
 
         <main>
 <h1>intro to SQL</h1>
-<p>SQL (Structured Query Language) is a commonly used and reliable way for programs to save and load data. For large amounts of data, it's usually much better than just using a text file.</p>
-<p>There's a lot that can be learned about SQL. Here are some resources to get you started. <em>(I have no affiliation with any of these.)</em></p>
+<p>SQL (Structured Query Language) is a commonly used and reliable way for programs to store data. In many cases, it's much better in many ways than just using files directly.</p>
+<p>There's a lot that can be learned about SQL. Here are some resources to get you started.</p>
 <ol>
-<li>Learn SQL with <a href="https://sqlbolt.com/">SQLBolt</a>. These exercises can take a few weeks to get through, depending on your schedule.</li>
-<li>Choose a database technology that uses SQL.<ul>
-<li>For Python, <a href="https://www.fullstackpython.com/databases.html">Full Stack Python</a> compares some of them and has guides for them.</li>
-<li><a href="https://supabase.com/">Supabase</a> and <a href="https://turso.tech/pricing">Turso</a> (and some others) have decent free tiers, make setting up databases relatively easy, and are open source.</li>
-<li>Applications that will be downloaded and need a local database appear to usually use SQLite so that the user doesn't have to set up a database themselves. <a href="https://news.ycombinator.com/item?id=31152490">Here's a 2022/4/25 HN discussion</a> on the pros and cons SQLite vs other database technologies.</li>
+<li>Learn SQL with <a href="https://sqlbolt.com/">SQLBolt</a>.</li>
+<li>Choose a database technology and tools.<ul>
+<li><a href="https://www.fullstackpython.com/databases.html"><em>Databases</em> by Full Stack Python</a> is a guide (not entirely for Python) with various resources about databases.</li>
+<li><a href="https://supabase.com/">Supabase</a> and <a href="https://turso.tech/pricing">Turso</a> (and some others) have decent free tiers and make setting up databases relatively easy.</li>
 <li><a href="https://www.beekeeperstudio.io/">Beekeeper Studio</a> is a free and open source SQL editor and database manager. I use it and it seems to work well.</li>
-<li>If you are making an asynchronous application, you will probably want to choose an asynchronous library for interacting with your database. E.g. <a href="https://magicstack.github.io/asyncpg/current/">asyncpg</a> is a good choice for PostgreSQL in asynchronous Python.</li>
+<li>Tools like <a href="https://sqlc.dev/">sqlc</a> generate type-safe database interface code for you without unnecessary abstraction. Here are other SQL interface generators (or related tools) I haven't really looked into: <a href="https://github.com/go-jet/jet">Jet</a>, <a href="https://github.com/volatiletech/sqlboiler">SQLBoiler</a>, <a href="https://github.com/launchbadge/sqlx">SQLx</a>, <a href="https://goa.design/">Goa</a>, <a href="https://gokit.io/">Go kit</a>, <a href="https://gqlgen.com/">gqlgen</a>, <a href="https://bun.uptrace.dev/">Bun</a>.</li>
+<li>If you are making an asynchronous application, you will probably want to choose an asynchronous library for interacting with your database. For example, <a href="https://magicstack.github.io/asyncpg/current/">asyncpg</a> is a good choice for PostgreSQL in asynchronous Python.</li>
+<li>If each user of software you're making needs their own local database, consider using <a href="https://www.youtube.com/watch?v=jH39c5-y6kg">SQLite</a> so that the user doesn't have to set up the database themselves. <a href="https://news.ycombinator.com/item?id=31152490">Here's a 2022/4/25 HN discussion</a> on the pros and cons SQLite versus other database technologies.</li>
+<li>There are some SQL services available in the <a href="https://education.github.com/pack">GitHub student developer pack</a>.</li>
 </ul>
 </li>
 </ol>
+<h2>intermediate topics</h2>
 <ul>
-<li>There are some SQL services available in the <a href="https://education.github.com/pack">GitHub student developer pack</a>.</li>
-<li><a href="https://www.youtube.com/watch?v=GFQaEYEc8_8">Learn Database Normalization - 1NF, 2NF, 3NF, 4NF, 5NF</a> – YouTube</li>
+<li><a href="https://www.sqlines.com/home">Sqlines</a> is a collection of &quot;tools to help you transfer data, convert database schema (DDL), views, stored procedures, packages, user-defined functions (UDFs), triggers, SQL queries, SQL scripts between different database platforms.&quot;</li>
+<li><a href="https://www.youtube.com/watch?v=GFQaEYEc8_8"><em>Learn Database Normalization - 1NF, 2NF, 3NF, 4NF, 5NF</em> by Decomplexify</a></li>
+<li><a href="https://use-the-index-luke.com/"><em>Use the Index, Luke!</em> by Markus Winand</a></li>
+<li><a href="https://sive.rs/pg"><em>Simplify: move code into database functions</em> by Derek Sivers</a></li>
+<li><a href="https://vadimkravcenko.com/shorts/database-migrations/"><em>Database migrations</em> by Vadim Kravcenko</a></li>
+<li><a href="https://news.ycombinator.com/item?id=31895623"><em>Things to know about databases</em> by Mahdi Yusuf</a></li>
+<li><a href="https://news.ycombinator.com/item?id=37724549">2023/10/1 HN discussion on database migrations</a></li>
 </ul>
-<p>There are also alternatives to SQL (besides just using text files) that have different strengths and weaknesses. The most commonly used alternative is called <a href="https://en.wikipedia.org/wiki/NoSQL">NoSQL</a>.</p>
 </main>
 
 <footer>
