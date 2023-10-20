@@ -27,8 +27,7 @@
         <main>
 <h1>intro to recursion with C++</h1>
 <p>Recursion is a type of loop created by making a function call itself. Here's a recursive function that loops infinitely (until the computer runs out of memory) when called:</p>
-<pre><code class="language-cpp"><div class="source"><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">print_stars</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<pre><code class="language-cpp"><div class="source"><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">print_stars</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="n">print_stars</span><span class="p">();</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span></div></code></pre><p>Just like for loops and while loops, recursion can be used to do something repeatedly. Some problems are easier to solve with one kind of loop than another.</p>
@@ -42,14 +41,12 @@
 <span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span><span class="w"></span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">print_numbers</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">max</span><span class="p">);</span><span class="w"></span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">print_numbers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">print_numbers</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">max</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">print_numbers</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">max</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">max</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">;</span><span class="w"></span>
@@ -59,8 +56,7 @@
 <pre><code class="language-cpp"><div class="source"><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 <span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span><span class="w"></span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">max</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">;</span><span class="w"></span>
@@ -71,14 +67,12 @@
 <span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span><span class="w"></span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">print_even_numbers</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">max</span><span class="p">);</span><span class="w"></span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">print_even_numbers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">print_even_numbers</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">max</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">print_even_numbers</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">max</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">max</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">  </span><span class="c1">// Here&#39;s the only change (except the function name).</span>
@@ -89,14 +83,12 @@
 <p>One reason why learning to write recursive functions is often confusing at first is because with for loops and while loops, it's easy to think of the big picture of what you want to do first and gradually add detail. With recursion, it's usually easier to start with details (&quot;base cases&quot;) and gradually build up from there.</p>
 <p>For example, let's say we want to write a recursive function that reverses a string. Start by thinking, &quot;What is an example of a simple input that is easy to deal with?&quot;</p>
 <p>What if the function is called with a string of size 1? Then we can just return that string.</p>
-<pre><code class="language-cpp"><div class="source"><span></span><span class="n">string</span><span class="w"> </span><span class="nf">reverse</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">str</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<pre><code class="language-cpp"><div class="source"><span></span><span class="n">string</span><span class="w"> </span><span class="nf">reverse</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">str</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">str</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">str</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="c1">// TODO: handle cases where the string&#39;s size is not 1.</span>
 <span class="p">}</span><span class="w"></span></div></code></pre><p>Also, what if the given string is empty? We can change the <code>==</code> to <code>&lt;=</code> so that an empty string can be returned.</p>
-<pre><code class="language-cpp"><div class="source"><span></span><span class="n">string</span><span class="w"> </span><span class="nf">reverse</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">str</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<pre><code class="language-cpp"><div class="source"><span></span><span class="n">string</span><span class="w"> </span><span class="nf">reverse</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">str</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">str</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">str</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="c1">// TODO: handle cases where the string&#39;s size is &gt; 1.</span>
@@ -134,8 +126,7 @@
 <p>This idea of swapping the first character with the rest of the string recursively is easy to put into code. With C++, we can get part of a string using the <a href="https://cplusplus.com/reference/string/string/substr/">substr</a> function.</p>
 <pre><code class="language-cpp"><div class="source"><span></span><span class="n">string</span><span class="w"> </span><span class="n">word</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">word</span><span class="p">.</span><span class="n">substr</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w">  </span><span class="c1">// ello</span></div></code></pre><p>Here's what we left off with:</p>
-<pre><code class="language-cpp"><div class="source"><span></span><span class="n">string</span><span class="w"> </span><span class="nf">reverse</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">str</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<pre><code class="language-cpp"><div class="source"><span></span><span class="n">string</span><span class="w"> </span><span class="nf">reverse</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">str</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">str</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">str</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="c1">// TODO: handle cases where the string&#39;s size is &gt; 1.</span>
@@ -169,12 +160,10 @@
 <pre><code class="language-cpp"><div class="source"><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 <span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">struct</span><span class="w"> </span><span class="nc">Node</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Node</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="n">Node</span><span class="o">*</span><span class="w"> </span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">Node</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">new_value</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Node</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">new_value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_value</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
@@ -183,8 +172,7 @@
 <span class="kt">void</span><span class="w"> </span><span class="nf">print_list</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="p">);</span><span class="w"></span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">delete_list</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="p">);</span><span class="w"></span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">Node</span><span class="o">*</span><span class="w"> </span><span class="n">list_head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="n">append</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="n">list_head</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="n">append</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="n">list_head</span><span class="p">);</span><span class="w"></span>
@@ -197,24 +185,21 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">append</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">new_value</span><span class="p">,</span><span class="w"> </span><span class="n">Node</span><span class="o">*&amp;</span><span class="w"> </span><span class="n">ptr</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">append</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">new_value</span><span class="p">,</span><span class="w"> </span><span class="n">Node</span><span class="o">*&amp;</span><span class="w"> </span><span class="n">ptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="n">new_value</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="k">else</span><span class="w"></span>
 <span class="w">        </span><span class="n">append</span><span class="p">(</span><span class="n">new_value</span><span class="p">,</span><span class="w"> </span><span class="n">ptr</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">print_list</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">print_list</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">ptr</span><span class="o">-&gt;</span><span class="n">value</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="n">print_list</span><span class="p">(</span><span class="n">ptr</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">delete_list</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">delete_list</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="n">delete_list</span><span class="p">(</span><span class="n">ptr</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">);</span><span class="w"></span>
@@ -226,12 +211,10 @@
 <pre><code class="language-cpp"><div class="source"><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 <span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">struct</span><span class="w"> </span><span class="nc">Node</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Node</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="n">Node</span><span class="o">*</span><span class="w"> </span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">Node</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">new_value</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Node</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">new_value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    	</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_value</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
@@ -240,8 +223,7 @@
 <span class="kt">void</span><span class="w"> </span><span class="nf">print_list</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="p">);</span><span class="w"></span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">delete_list</span><span class="p">(</span><span class="n">Node</span><span class="o">*&amp;</span><span class="w"> </span><span class="n">ptr</span><span class="p">);</span><span class="w"></span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">Node</span><span class="o">*</span><span class="w"> </span><span class="n">list_head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="n">append</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="n">list_head</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="n">append</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="n">list_head</span><span class="p">);</span><span class="w"></span>
@@ -254,10 +236,8 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">append</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">new_value</span><span class="p">,</span><span class="w"> </span><span class="n">Node</span><span class="o">*&amp;</span><span class="w"> </span><span class="n">list_head</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">list_head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">append</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">new_value</span><span class="p">,</span><span class="w"> </span><span class="n">Node</span><span class="o">*&amp;</span><span class="w"> </span><span class="n">list_head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">list_head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    	</span><span class="n">list_head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="n">new_value</span><span class="p">);</span><span class="w"></span>
 <span class="w">    	</span><span class="k">return</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
@@ -267,16 +247,13 @@
 <span class="w">    </span><span class="n">ptr</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="n">new_value</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">print_list</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">print_list</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(;</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ptr</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span><span class="w"></span>
 <span class="w">    	</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">ptr</span><span class="o">-&gt;</span><span class="n">value</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">delete_list</span><span class="p">(</span><span class="n">Node</span><span class="o">*&amp;</span><span class="w"> </span><span class="n">ptr</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">ptr</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">delete_list</span><span class="p">(</span><span class="n">Node</span><span class="o">*&amp;</span><span class="w"> </span><span class="n">ptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">ptr</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    	</span><span class="n">Node</span><span class="o">*</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ptr</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
 <span class="w">    	</span><span class="k">delete</span><span class="w"> </span><span class="n">ptr</span><span class="p">;</span><span class="w"></span>
 <span class="w">    	</span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span><span class="w"></span>
@@ -357,14 +334,12 @@
 <span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span><span class="w"></span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">print_descending_numbers</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">);</span><span class="w"></span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">print_descending_numbers</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">print_descending_numbers</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">print_descending_numbers</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">min</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">;</span><span class="w"></span>
@@ -375,15 +350,13 @@
 <span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span><span class="w"></span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">find_sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">);</span><span class="w"></span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">find_sum</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sum</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">find_sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">find_sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">min</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">find_sum</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">min</span><span class="p">);</span><span class="w"></span>
@@ -393,15 +366,13 @@
 <span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span><span class="w"></span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">find_product</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">);</span><span class="w"></span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">find_product</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">product</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">find_product</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">find_product</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">min</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">find_product</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">min</span><span class="p">);</span><span class="w"></span>
@@ -411,42 +382,36 @@
 <span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span><span class="w"></span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">factorial</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"></span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factorial</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">result</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">factorial</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">factorial</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span></div></code></pre><p>Output: <code>120</code></p>
 <p><strong>sample answer 5:</strong> A function that recursively finds the sum of all integers in the linked list:</p>
-<pre><code class="language-cpp"><div class="source"><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">find_sum</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span><span class="w"> </span><span class="n">node_ptr</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<pre><code class="language-cpp"><div class="source"><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">find_sum</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span><span class="w"> </span><span class="n">node_ptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">node_ptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"></span>
 <span class="w">    	</span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">node_ptr</span><span class="o">-&gt;</span><span class="n">value</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">find_sum</span><span class="p">(</span><span class="n">node_ptr</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span></div></code></pre><p><strong>sample answer 6:</strong> A function that recursively finds the length of the linked list:</p>
-<pre><code class="language-cpp"><div class="source"><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">find_length</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span><span class="w"> </span><span class="n">node_ptr</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<pre><code class="language-cpp"><div class="source"><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">find_length</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span><span class="w"> </span><span class="n">node_ptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">node_ptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"></span>
 <span class="w">    	</span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">find_length</span><span class="p">(</span><span class="n">node_ptr</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span></div></code></pre><p><strong>sample answer 7:</strong> A function that recursively finds the location of a value in the linked list:</p>
-<pre><code class="language-cpp"><div class="source"><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">find_value</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">Node</span><span class="o">*</span><span class="w"> </span><span class="n">node_ptr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<pre><code class="language-cpp"><div class="source"><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">find_value</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">Node</span><span class="o">*</span><span class="w"> </span><span class="n">node_ptr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">node_ptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"></span>
 <span class="w">    	</span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">target</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">node_ptr</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">)</span><span class="w"></span>
 <span class="w">    	</span><span class="k">return</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">find_value</span><span class="p">(</span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">node_ptr</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span></div></code></pre><p><strong>sample answer 8:</strong> A function that recursively inserts a new value into the linked list at a given index:</p>
-<pre><code class="language-cpp"><div class="source"><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">insert</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">new_value</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">Node</span><span class="o">**</span><span class="w"> </span><span class="n">next_ptr</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<pre><code class="language-cpp"><div class="source"><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">insert</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">new_value</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">Node</span><span class="o">**</span><span class="w"> </span><span class="n">next_ptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
 <span class="w">    	</span><span class="n">Node</span><span class="o">*</span><span class="w"> </span><span class="n">new_node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="n">new_value</span><span class="p">);</span><span class="w"></span>
