@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+
+    <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <title>Chris' notes</title>
+        <link rel='stylesheet' type='text/css' href='../style.css' media='screen' />
+        <!-- bootstrap -->
+        <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'
+            integrity='sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z' crossorigin='anonymous'>
+        <!-- bootstrap -->
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href='../about.html'>About</a></li>
+                    <li><a href='../index.html'>Home</a></li>
+                </ul>
+                <a href='../index.html' class='title'>Chris' notes</a>
+            </nav>
+        </header>
+
+        <main>
+<h1>publishing Go packages</h1>
+<p>There are many ways you can share Go code and applications. Here are a few.</p>
+<h2>as executable files (binaries)</h2>
+<p>With Go, it's super easy to create and publish executables for all major platforms using <a href="https://goreleaser.com/">GoReleaser</a> and <a href="https://github.com/marketplace/actions/goreleaser-action">the GoReleaser GitHub Action</a>. You can see an example of the result <a href="https://github.com/wheelercj/email-linter/releases">here</a>. If you publish your executables on the web, you may want to also <a href="https://www.microsoft.com/en-us/wdsi/filesubmission">submit the Windows executable(s) to Microsoft for malware analysis</a> as a software developer to try to prevent users from getting the Windows Defender SmartScreen warning.</p>
+<h2>publishing to the Go package index (pkg.go.dev)</h2>
+<p>This allows anyone with Go installed to download your package with <code>go get</code> or <code>go install</code>. <code>go get</code> is for getting code, and <code>go install</code> is for installing executables (more details on that in <a href="https://go.dev/doc/go-get-install-deprecation">the Go docs</a> and <a href="https://stackoverflow.com/questions/24878737/what-is-the-difference-between-go-get-and-go-install">this Stack Overflow discussion</a>).</p>
+<p>Here are the official docs on publishing to pkg.go.dev:</p>
+<ul>
+<li><a href="https://tip.golang.org/blog/publishing-go-modules">Publishing Go Modules</a></li>
+<li><a href="https://go.dev/doc/modules/publishing">Publishing a module</a><ul>
+<li>The PowerShell equivalent of the command in step 6 is <code>&gt; $env:GOPROXY=&quot;proxy.golang.org&quot; &amp;&amp; go list -m example.com/mymodule@v0.1.0</code></li>
+</ul>
+</li>
+</ul>
+<p>The package may take some time to appear in the package index because the servers are not always running at 100%. If you want to, you may be able to speed up indexing by searching for your package at pkg.go.dev, or especially by using <code>go get</code> on the package.</p>
+<h2>Homebrew and Snap</h2>
+<p>Although I haven't tried it myself, <a href="https://github.com/wakatara/harsh">this repo</a> appears to be a good example of how to automatically publish to the Homebrew and Snap package managers.</p>
+</main>
+
+<footer>
+    
+</footer>
+
+<!-- bootstrap -->
+<script src='https://code.jquery.com/jquery-3.5.1.slim.min.js'
+    integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj'
+    crossorigin='anonymous'></script>
+<script src='https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js'
+    integrity='sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN'
+    crossorigin='anonymous'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'
+    integrity='sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV'
+    crossorigin='anonymous'></script>
+<!-- bootstrap -->
+</body>
+
+</html>
